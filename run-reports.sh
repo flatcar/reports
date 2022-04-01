@@ -5,6 +5,7 @@ set -euo pipefail
 : ${COREOS_OVERLAY:='../coreos-overlay/main'}
 : ${PORTAGE_STABLE:='../portage-stable/main'}
 : ${GENTOO:='../gentoo'}
+: ${CFWG:='../flatcar-build-scripts/compare-flatcar-with-gentoo'}
 # I'm usually running reports on Friday, but reports should be based
 # on state of things from Thursday, thus 1 day ago. Also the diff is
 # made against the state from a week before, also from Thursday, thus
@@ -68,9 +69,9 @@ if [[ -z "${RERUN}" ]]; then
     done
 fi
 
-COREOS_OVERLAY="${co}" PORTAGE_STABLE="${ps}" GENTOO="${g}" WORKDIR="${DATE}/wd" KEEP_WORKDIR=x ../flatcar-build-scripts/compare-flatcar-with-gentoo >"${DATE}/txt"
+COREOS_OVERLAY="${co}" PORTAGE_STABLE="${ps}" GENTOO="${g}" WORKDIR="${DATE}/wd" KEEP_WORKDIR=x "${CFWG}" >"${DATE}/txt"
 
-COREOS_OVERLAY="${co}" PORTAGE_STABLE="${ps}" GENTOO="${g}" JSON=x WORKDIR="${DATE}/wd" KEEP_WORKDIR=x ../flatcar-build-scripts/compare-flatcar-with-gentoo >"${DATE}/json"
+COREOS_OVERLAY="${co}" PORTAGE_STABLE="${ps}" GENTOO="${g}" JSON=x WORKDIR="${DATE}/wd" KEEP_WORKDIR=x "${CFWG}" >"${DATE}/json"
 
 if [[ "${PREV_DATE}" != '-' ]]; then
     output=()
