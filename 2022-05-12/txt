@@ -1,0 +1,42 @@
+meta:
+ portage-stable hash:                    cb92e3b73c8692b954166f2ebffc4f4430e3c675
+ portage-stable date:                    Fri, 6 May 2022 10:59:48 +0200
+ coreos-overlay hash:                    b0942df635c97f82635f8154731b452fde095e83
+ coreos-overlay date:                    Thu, 12 May 2022 16:28:07 +0200
+ gentoo hash:                            15e998d86f5915ca56cb5b8c935b2a1786255d9e
+ gentoo date:                            Thu, 12 May 2022 22:57:09 +0100
+
+general:
+ total packages:                         551
+ portage-stable:                         404     (73.32%)
+ coreos-overlay:                         147     (26.67%)
+ our packages:                           80      (14.51%)
+ common packages:                        471     (85.48%)
+ common packages in portage-stable:      404     (73.32%)
+ common packages in coreos-overlay:      67      (12.15%)
+ newer packages:                         5       (.90%)
+ equal packages:                         268     (48.63%)
+ outdated packages:                      198     (35.93%)
+ outdated revision packages:             22      (3.99%)
+ outdated suffix packages:               4       (.72%)
+ outdated version packages:              172     (31.21%)
+
+portage-stable:
+ total packages:                         404
+ common packages:                        404     (100.00%)
+ newer packages:                         1       (.24%)
+ equal packages:                         252     (62.37%)
+ all outdated packages:                  151     (37.37%)
+ outdated revision packages:             20      (4.95%)
+ outdated suffix packages:               3       (.74%)
+ outdated version packages:              128     (31.68%)
+
+coreos-overlay:
+ total packages:                         147
+ common packages:                        67      (45.57%)
+ newer packages:                         4       (2.72%)
+ equal packages:                         16      (10.88%)
+ all outdated packages:                  47      (31.97%)
+ outdated revision packages:             2       (1.36%)
+ outdated suffix packages:               1       (.68%)
+ outdated version packages:              44      (29.93%)
