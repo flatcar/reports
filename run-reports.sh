@@ -2,10 +2,10 @@
 
 set -euo pipefail
 
-: ${COREOS_OVERLAY:='../coreos-overlay/main'}
-: ${PORTAGE_STABLE:='../portage-stable/main'}
-: ${GENTOO:='../gentoo'}
-: ${CFWG:='../flatcar-build-scripts/compare-flatcar-with-gentoo'}
+: ${COREOS_OVERLAY:='../../coreos-overlay/main'}
+: ${PORTAGE_STABLE:='../../portage-stable/main'}
+: ${GENTOO:='../../gentoo/master'}
+: ${CFWG:='../../flatcar-build-scripts/master/compare-flatcar-with-gentoo'}
 # I'm usually running reports on Friday, but reports should be based
 # on state of things from Thursday, thus 1 day ago. Also the diff is
 # made against the state from a week before, also from Thursday, thus
