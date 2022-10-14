@@ -1,0 +1,17 @@
+general:
+ equal packages: -7 (from 247 to 240)
+ outdated packages: +7 (from 225 to 232)
+ outdated revision packages: +5 (from 37 to 42)
+ outdated version packages: +2 (from 183 to 185)
+
+portage-stable:
+ equal packages: -9 (from 235 to 226)
+ all outdated packages: +9 (from 171 to 180)
+ outdated revision packages: +4 (from 35 to 39)
+ outdated version packages: +5 (from 132 to 137)
+
+coreos-overlay:
+ equal packages: +2 (from 12 to 14)
+ all outdated packages: -2 (from 54 to 52)
+ outdated revision packages: +1 (from 2 to 3)
+ outdated version packages: -3 (from 51 to 48)
