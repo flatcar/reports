@@ -78,7 +78,7 @@ app-crypt/efitools gentoo:1.9.2 flatcar:1.9.2 result:=
 app-crypt/gnupg gentoo:2.3.6 flatcar:2.2.29 result:>v1n
 app-crypt/libmd gentoo:1.0.4 flatcar:1.0.4 result:=
 app-crypt/mhash gentoo:0.9.9.9-r2 flatcar:0.9.9.9-r2 result:=
-app-crypt/mit-krb5 gentoo:1.19.3-r2 flatcar:1.19.2-r2 result:>v2n
+app-crypt/mit-krb5 gentoo:1.19.3-r2 flatcar:1.19.3-r2 result:=
 app-crypt/p11-kit gentoo:0.24.1 flatcar:0.23.22 result:>v1n
 app-crypt/pinentry gentoo:1.2.0 flatcar:1.2.0 result:=
 app-crypt/rhash gentoo:1.4.2 flatcar:1.4.2 result:=
@@ -90,7 +90,7 @@ app-editors/nano gentoo:6.3 flatcar:5.9 result:>v0n
 app-editors/vim-core gentoo:8.2.4586 flatcar:8.2.4328 result:>v2n
 app-editors/vim gentoo:8.2.4586 flatcar:8.2.4328 result:>v2n
 app-emulation/open-vm-tools gentoo:11.3.5_p18557794 flatcar:12.0.0 result:<v0n
-app-emulation/qemu gentoo:7.0.0-r1 flatcar:6.1.0-r1 result:>v0n
+app-emulation/qemu gentoo:7.0.0-r1 flatcar:7.0.0-r1 result:=
 app-eselect/eselect-iptables gentoo:20220320 flatcar:20200508 result:>v0n
 app-eselect/eselect-lib-bin-symlink gentoo:0.1.1-r1 flatcar:0.1.1-r1 result:=
 app-eselect/eselect-pinentry gentoo:0.7.2 flatcar:0.7.2 result:=
@@ -224,7 +224,7 @@ dev-python/wrapt gentoo:1.14.1 flatcar:1.12.1 result:>v1n
 dev-util/boost-build gentoo:1.79.0 flatcar:1.77.0 result:>v1n
 dev-util/bpftool gentoo:5.17.4 flatcar:5.16.4 result:>v1n
 dev-util/bsdiff gentoo:4.3-r4 flatcar:4.3-r8 result:<r1
-dev-util/catalyst gentoo:3.0.21 flatcar:3.0.20 result:>v2n
+dev-util/catalyst gentoo:3.0.21 flatcar:3.0.21 result:=
 dev-util/checkbashisms gentoo:2.22.1 flatcar:2.21.4 result:>v1n
 dev-util/cmake gentoo:3.23.1 flatcar:3.22.1 result:>v1n
 dev-util/cmocka gentoo:1.1.5 flatcar:1.1.5 result:=
@@ -291,7 +291,7 @@ net-misc/rsync gentoo:3.2.4-r1 flatcar:3.2.4-r1 result:=
 net-misc/socat gentoo:2.0.0_beta9 flatcar:2.0.0_beta9 result:=
 net-misc/wget gentoo:1.21.3 flatcar:1.21.2 result:>v2n
 net-misc/whois gentoo:5.5.13 flatcar:5.5.11 result:>v2n
-net-nds/openldap gentoo:2.6.1-r1 flatcar:2.4.58 result:>v1n
+net-nds/openldap gentoo:2.6.1-r1 flatcar:2.6.1-r1 result:=
 net-nds/rpcbind gentoo:1.2.6 flatcar:1.2.6 result:=
 net-vpn/wireguard-tools gentoo:1.0.20210914 flatcar:1.0.20200319 result:>v2n
 perl-core/File-Temp gentoo:0.231.100 flatcar:0.231.100 result:=
@@ -390,7 +390,7 @@ sys-firmware/sgabios gentoo:0.1_pre10 flatcar:0.1_pre10 result:=
 sys-fs/btrfs-progs gentoo:5.17 flatcar:5.15.1 result:>v1n
 sys-fs/cryptsetup gentoo:2.4.3-r1 flatcar:2.4.3-r1 result:=
 sys-fs/dosfstools gentoo:4.2 flatcar:4.2 result:=
-sys-fs/e2fsprogs gentoo:1.46.5-r1 flatcar:1.46.5 result:>r2
+sys-fs/e2fsprogs gentoo:1.46.5-r1 flatcar:1.46.5-r1 result:=
 sys-fs/lsscsi gentoo:0.32 flatcar:0.32 result:=
 sys-fs/lvm2 gentoo:2.03.14-r1 flatcar:2.02.188-r2 result:>v1n
 sys-fs/mdadm gentoo:4.2-r1 flatcar:4.2-r1 result:=
@@ -403,11 +403,10 @@ sys-kernel/dracut gentoo:055-r4 flatcar:055 result:>r0
 sys-kernel/installkernel-gentoo gentoo:5 flatcar:3 result:>v0n
 sys-kernel/linux-headers gentoo:5.17-r1 flatcar:5.15 result:>v1n
 sys-libs/binutils-libs gentoo:2.38-r2 flatcar:2.37_p1 result:>v1n
-sys-libs/e2fsprogs-libs gentoo:1.46.4-r1 flatcar:1.46.4-r1 result:=
 sys-libs/efivar gentoo:38 flatcar:38 result:=
 sys-libs/gdbm gentoo:1.23 flatcar:1.22 result:>v1n
 sys-libs/glibc gentoo:2.35-r4 flatcar:2.33-r10 result:>v1n
-sys-libs/ldb gentoo:2.5.0-r1 flatcar:2.3.0-r2 result:>v1n
+sys-libs/ldb gentoo:2.5.0-r1 flatcar:2.5.0-r1 result:=
 sys-libs/libcap gentoo:2.64 flatcar:2.60 result:>v1n
 sys-libs/libcap-ng gentoo:0.8.3 flatcar:0.8.2-r1 result:>v2n
 sys-libs/libseccomp gentoo:2.5.4 flatcar:2.5.3 result:>v2n
@@ -420,9 +419,9 @@ sys-libs/ncurses gentoo:6.3_p20220423-r1 flatcar:6.2_p20210619 result:>v1n
 sys-libs/nss-usrfiles gentoo:2.18.1 flatcar:2.30-r1 result:<v1n
 sys-libs/pam gentoo:1.5.2-r1 flatcar:1.5.1_p20210622-r1 result:>v2n
 sys-libs/readline gentoo:8.2_beta flatcar:8.1_p1-r1 result:>v1n
-sys-libs/talloc gentoo:2.3.3 flatcar:2.3.2 result:>v2n
-sys-libs/tdb gentoo:1.4.6 flatcar:1.4.5 result:>v2n
-sys-libs/tevent gentoo:0.12.0 flatcar:0.11.0 result:>v1n
+sys-libs/talloc gentoo:2.3.3 flatcar:2.3.3 result:=
+sys-libs/tdb gentoo:1.4.6 flatcar:1.4.6 result:=
+sys-libs/tevent gentoo:0.12.0 flatcar:0.12.0 result:=
 sys-libs/timezone-data gentoo:2022a flatcar:2021a-r1 result:>v0n
 sys-libs/zlib gentoo:1.2.12-r2 flatcar:1.2.12-r2 result:=
 sys-power/iasl gentoo:20200717 flatcar:20200717 result:=

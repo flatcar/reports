@@ -27,3 +27,7 @@ coreos-overlay:
  equal packages: -3 (from 15 to 12)
  all outdated packages: +5 (from 47 to 52)
  outdated version packages: +5 (from 44 to 49)
+
+automation:
+ total updatable things: +1 (from 667 to 668)
+ updatable things in portage-stable: +1 (from 510 to 511)

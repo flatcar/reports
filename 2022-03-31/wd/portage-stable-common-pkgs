@@ -13,6 +13,7 @@ acct-group/messagebus
 acct-group/netperf
 acct-group/nobody
 acct-group/ntp
+acct-group/pcap
 acct-group/polkitd
 acct-group/portage
 acct-group/render
@@ -39,6 +40,7 @@ acct-user/messagebus
 acct-user/netperf
 acct-user/nobody
 acct-user/ntp
+acct-user/pcap
 acct-user/polkitd
 acct-user/portage
 acct-user/root
@@ -71,6 +73,7 @@ app-arch/zstd
 app-cdr/cdrtools
 app-crypt/argon2
 app-crypt/efitools
+app-crypt/libmd
 app-crypt/mhash
 app-crypt/mit-krb5
 app-crypt/pinentry
@@ -389,6 +392,7 @@ virtual/perl-IO
 virtual/perl-version
 virtual/pkgconfig
 virtual/resolvconf
+virtual/rust
 virtual/service-manager
 virtual/ssh
 virtual/tmpfiles

@@ -2,8 +2,8 @@
   "meta": {
     "portage-stable hash": "ba2a5f0c248caa65e567bce0be484cc5704991db",
     "portage-stable date": "Mon, 4 Apr 2022 17:31:12 +0200",
-    "coreos-overlay hash": "9afdeb6e71da6eea8d10ed8134a5ea50394b6b5f",
-    "coreos-overlay date": "Wed, 6 Apr 2022 16:21:47 +0200",
+    "coreos-overlay hash": "8bb5fa93c9c7994e57a4c7672ed6ea558f839278",
+    "coreos-overlay date": "Wed, 6 Apr 2022 16:58:15 +0200",
     "gentoo hash": "fce3d8e6748ed924dae26c2bd53acd68c5ff9b85",
     "gentoo date": "Thu, 7 Apr 2022 22:41:07 +0100"
   },
@@ -41,5 +41,13 @@
     "outdated revision packages": 2,
     "outdated suffix packages": 1,
     "outdated version packages": 43
+  },
+  "automation": {
+    "total updatable things": 663,
+    "total updatable things under automation": 0,
+    "updatable things in portage-stable": 503,
+    "updatable things under automation in portage-stable": 0,
+    "updatable things in coreos-overlay": 160,
+    "updatable things under automation in coreos-overlay": 0
   }
 }

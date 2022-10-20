@@ -41,5 +41,13 @@
     "outdated revision packages": 3,
     "outdated suffix packages": 2,
     "outdated version packages": 42
+  },
+  "automation": {
+    "total updatable things": 730,
+    "total updatable things under automation": 0,
+    "updatable things in portage-stable": 569,
+    "updatable things under automation in portage-stable": 0,
+    "updatable things in coreos-overlay": 161,
+    "updatable things under automation in coreos-overlay": 0
   }
 }

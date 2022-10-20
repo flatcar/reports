@@ -204,7 +204,7 @@ dev-util/boost-build gentoo:1.78.0-r1 flatcar:1.77.0 result:>v1n
 dev-util/bpftool gentoo:5.16.14 flatcar:5.16.4 result:>v2n
 dev-util/catalyst gentoo:3.0.21 flatcar:3.0.20 result:>v2n
 dev-util/checkbashisms gentoo:2.21.4 flatcar:2.21.4 result:=
-dev-util/cmake gentoo:3.23.0_rc3 flatcar:3.22.1 result:>v1n
+dev-util/cmake gentoo:3.23.0_rc4 flatcar:3.22.1 result:>v1n
 dev-util/cmocka gentoo:1.1.5 flatcar:1.1.5 result:=
 dev-util/desktop-file-utils gentoo:0.26-r1 flatcar:0.26-r1 result:=
 dev-util/gdbus-codegen gentoo:2.70.4 flatcar:2.70.0 result:>v2n

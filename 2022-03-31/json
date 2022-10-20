@@ -1,36 +1,36 @@
 {
   "meta": {
-    "portage-stable hash": "03fe5cb7f8c0de6174c8d85d06d5b28344d793d1",
-    "portage-stable date": "Thu, 31 Mar 2022 11:28:26 +0200",
+    "portage-stable hash": "5d24fad9aca57b925cf3707a3f03aaead01119ab",
+    "portage-stable date": "Thu, 31 Mar 2022 17:31:25 +0200",
     "coreos-overlay hash": "7b23a2db3d3f04de7d687298bca9e7b4a120d9fb",
     "coreos-overlay date": "Thu, 31 Mar 2022 17:27:00 +0200",
     "gentoo hash": "9b7d0ce18858075cd8761c90f3d573a7094d2c0a",
     "gentoo date": "Thu, 31 Mar 2022 14:52:42 -0700"
   },
   "general": {
-    "total packages": 549,
-    "portage-stable": 400,
+    "total packages": 552,
+    "portage-stable": 404,
     "coreos-overlay": 149,
     "our packages": 82,
-    "common packages": 467,
-    "common packages in portage-stable": 400,
+    "common packages": 470,
+    "common packages in portage-stable": 404,
     "common packages in coreos-overlay": 67,
     "newer packages": 4,
-    "equal packages": 280,
-    "outdated packages": 183,
-    "outdated revision packages": 19,
-    "outdated suffix packages": 4,
-    "outdated version packages": 160
+    "equal packages": 306,
+    "outdated packages": 160,
+    "outdated revision packages": 17,
+    "outdated suffix packages": 3,
+    "outdated version packages": 140
   },
   "portage-stable": {
-    "total packages": 400,
-    "common packages": 400,
+    "total packages": 404,
+    "common packages": 404,
     "newer packages": 0,
-    "equal packages": 263,
-    "all outdated packages": 137,
-    "outdated revision packages": 16,
-    "outdated suffix packages": 3,
-    "outdated version packages": 118
+    "equal packages": 290,
+    "all outdated packages": 114,
+    "outdated revision packages": 14,
+    "outdated suffix packages": 2,
+    "outdated version packages": 98
   },
   "coreos-overlay": {
     "total packages": 149,
@@ -41,5 +41,13 @@
     "outdated revision packages": 3,
     "outdated suffix packages": 1,
     "outdated version packages": 42
+  },
+  "automation": {
+    "total updatable things": 664,
+    "total updatable things under automation": 0,
+    "updatable things in portage-stable": 504,
+    "updatable things under automation in portage-stable": 0,
+    "updatable things in coreos-overlay": 160,
+    "updatable things under automation in coreos-overlay": 0
   }
 }

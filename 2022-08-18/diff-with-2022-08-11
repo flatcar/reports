@@ -20,3 +20,7 @@ coreos-overlay:
  total packages: -1 (from 146 to 145)
  common packages: -1 (from 67 to 66)
  equal packages: -1 (from 12 to 11)
+
+automation:
+ updatable things in portage-stable: +1 (from 511 to 512)
+ updatable things in coreos-overlay: -1 (from 157 to 156)

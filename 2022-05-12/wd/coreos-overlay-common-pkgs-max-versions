@@ -53,7 +53,7 @@ sys-fs/lvm2 gentoo:2.03.14-r1 flatcar:2.02.188-r2 result:>v1n
 sys-fs/mdadm gentoo:4.2-r1 flatcar:4.2-r1 result:=
 sys-kernel/dracut gentoo:055-r4 flatcar:055 result:>r0
 sys-libs/glibc gentoo:2.35-r4 flatcar:2.33-r10 result:>v1n
-sys-libs/ldb gentoo:2.5.0-r1 flatcar:2.3.0-r2 result:>v1n
+sys-libs/ldb gentoo:2.5.0-r1 flatcar:2.5.0-r1 result:=
 sys-libs/libselinux gentoo:3.4_rc1 flatcar:3.2-r1 result:>v1n
 sys-libs/libsemanage gentoo:3.4_rc1 flatcar:3.2 result:>v1n
 sys-libs/ncurses gentoo:6.3_p20220423-r1 flatcar:6.2_p20210619 result:>v1n

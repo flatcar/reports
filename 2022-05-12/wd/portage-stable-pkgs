@@ -349,9 +349,9 @@ sys-fs/xfsprogs
 sys-kernel/installkernel-gentoo
 sys-kernel/linux-headers
 sys-libs/binutils-libs
-sys-libs/e2fsprogs-libs
 sys-libs/efivar
 sys-libs/gdbm
+sys-libs/ldb
 sys-libs/libcap
 sys-libs/libcap-ng
 sys-libs/libseccomp
