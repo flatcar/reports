@@ -5,7 +5,7 @@ set -euo pipefail
 : ${COREOS_OVERLAY:='../../coreos-overlay/main'}
 : ${PORTAGE_STABLE:='../../portage-stable/main'}
 : ${GENTOO:='../../gentoo/master'}
-: ${CFWG:='../../flatcar-build-scripts/master/compare-flatcar-with-gentoo'}
+: ${CFWG:='../../flatcar-build-scripts/stuff/compare-flatcar-with-gentoo'}
 # I'm usually running reports on Friday, but reports should be based
 # on state of things from Thursday, thus 1 day ago. Also the diff is
 # made against the state from a week before, also from Thursday, thus
@@ -77,7 +77,7 @@ if [[ "${PREV_DATE}" != '-' ]]; then
     output=()
     prev_json="${PREV_DATE}/json"
     this_json="${DATE}/json"
-    for group in 'general' 'portage-stable' 'coreos-overlay'; do
+    for group in 'general' 'portage-stable' 'coreos-overlay' 'automation'; do
         group_keys=()
         while read -r; do
             group_keys+=("${REPLY}")
