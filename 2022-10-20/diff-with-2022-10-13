@@ -1,0 +1,28 @@
+general:
+ portage-stable: +3 (from 409 to 412)
+ coreos-overlay: -3 (from 147 to 144)
+ common packages in portage-stable: +3 (from 409 to 412)
+ common packages in coreos-overlay: -3 (from 68 to 65)
+ equal packages: +8 (from 240 to 248)
+ outdated packages: -8 (from 232 to 224)
+ outdated version packages: -8 (from 185 to 177)
+
+portage-stable:
+ total packages: +3 (from 409 to 412)
+ common packages: +3 (from 409 to 412)
+ equal packages: +9 (from 226 to 235)
+ all outdated packages: -6 (from 180 to 174)
+ outdated version packages: -6 (from 137 to 131)
+
+coreos-overlay:
+ total packages: -3 (from 147 to 144)
+ common packages: -3 (from 68 to 65)
+ equal packages: -1 (from 14 to 13)
+ all outdated packages: -2 (from 52 to 50)
+ outdated version packages: -2 (from 48 to 46)
+
+automation:
+ total updatable things under automation: +3 (from 109 to 112)
+ updatable things in portage-stable: +3 (from 509 to 512)
+ updatable things under automation in portage-stable: +3 (from 109 to 112)
+ updatable things in coreos-overlay: -3 (from 158 to 155)
