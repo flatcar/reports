@@ -21,26 +21,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: reports
-      - name: Check out scripts repo
-        uses: actions/checkout@v3
-        with:
-          repository: flatcar/scripts
-          path: scripts
-          ref: main
-          fetch-depth: 1000
-      - name: Check out gentoo repo
-        uses: actions/checkout@v3
-        with:
-          repository: gentoo/gentoo
-          path: gentoo
-          ref: master
-          fetch-depth: 20000
-      - name: Check out flatcar-build-scripts
-        uses: actions/checkout@v3
-        with:
-          repository: flatcar/flatcar-build-scripts
-          path: flatcar-build-scripts
-          ref: krnowak/stuff
       - name: Figure out new report date
         id: new-report-date
         run: |
@@ -70,6 +50,29 @@ jobs:
               fi
           fi
           echo "ok=${ok}" >>"${GITHUB_OUTPUT}"
+      - name: Check out scripts repo
+        if: steps.validate-dates.outputs.ok == 1
+        uses: actions/checkout@v3
+        with:
+          repository: flatcar/scripts
+          path: scripts
+          ref: main
+          fetch-depth: 1000
+      - name: Check out gentoo repo
+        if: steps.validate-dates.outputs.ok == 1
+        uses: actions/checkout@v3
+        with:
+          repository: gentoo/gentoo
+          path: gentoo
+          ref: master
+          fetch-depth: 20000
+      - name: Check out flatcar-build-scripts
+        if: steps.validate-dates.outputs.ok == 1
+        uses: actions/checkout@v3
+        with:
+          repository: flatcar/flatcar-build-scripts
+          path: flatcar-build-scripts
+          ref: krnowak/stuff
       - name: Run reports
         if: steps.validate-dates.outputs.ok == 1
         env:
