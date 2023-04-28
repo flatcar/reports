@@ -2,8 +2,7 @@
 
 set -euo pipefail
 
-: ${COREOS_OVERLAY:='../../coreos-overlay/main'}
-: ${PORTAGE_STABLE:='../../portage-stable/main'}
+: ${SCRIPTS:='../../scripts/main'}
 : ${GENTOO:='../../gentoo/master'}
 : ${CFWG:='../../flatcar-build-scripts/stuff/compare-flatcar-with-gentoo'}
 # I'm usually running reports on Friday, but reports should be based
@@ -23,9 +22,22 @@ if [[ "${PREV_DATE}" != '-' ]] && [[ ! -e "${PREV_DATE}/json" ]]; then
     fail "no JSON data for ${PREV_DATE}"
 fi
 
-co="${COREOS_OVERLAY}"
-ps="${PORTAGE_STABLE}"
+s="${SCRIPTS}"
 g="${GENTOO}"
+
+# data variables:
+# 0 - var name
+# rest - paths passed to git log
+scripts_data=(
+    s
+    sdk_container/src/third_party/coreos-overlay/
+    sdk_container/src/third_party/portage-stable/
+)
+
+gentoo_data=(
+    g
+    '.'
+)
 
 if [[ -z "${RERUN}" ]]; then
     if [[ -e "${DATE}" ]]; then
@@ -41,11 +53,13 @@ if [[ -z "${RERUN}" ]]; then
     # compare-flatcar-with-gentoo script.
     unix_date="$(date --date "${DATE}" '+%s')"
     traps=':'
-    for pair in "portage-stable:ps" "coreos-overlay:co" "gentoo:g"; do
-        repo="${pair%%:*}"
-        var_name="${pair#*:}"
-        path="${!var_name}"
+    for repo in scripts gentoo; do
+        data_var_name="${repo}_data"
+        declare -n data_ref="${data_var_name}"
+        repo_path_var_name="${data_ref[0]}"
+        declare -n repo_path_ref="${repo_path_var_name}"
         wanted_hash=''
+        log_paths=( "${data_ref[@]:1}" )
         # Note that commit_date here is only the date, no time.
         while read -r commit_date commit_hash; do
             commit_unix_date=$(date --date "${commit_date}" '+%s')
@@ -53,25 +67,26 @@ if [[ -z "${RERUN}" ]]; then
                 wanted_hash="${commit_hash}"
                 break
             fi
-        done < <(git -C "${path}" log --pretty=format:'%cd %H' --date='short-local')
+        done < <(git -C "${repo_path_ref}" log --pretty=format:'%cd %H' --date='short-local' -- "${log_paths[@]}")
         if [[ -z "${wanted_hash}" ]]; then
             fail "Could not find a commit in ${repo} from ${DATE} or earlier"
         fi
         repo_tmp_path="${PWD}/$(mktemp --directory "./rr-${repo}-XXXXXXXXXX")"
         branch="rr/for-${DATE}"
-        git -C "${path}" worktree add --quiet -b "${branch}" "${repo_tmp_path}"
-        git -C "${repo_tmp_path}" reset --quiet --hard "${wanted_hash}"
-        declare -n var_ref="${var_name}"
-        var_ref="${repo_tmp_path}"
-        unset -n var_ref
-        traps+="; git -C '${path}' worktree remove '${repo_tmp_path}'; git -C '${path}' branch --quiet -D '${branch}'"
+        git -C "${repo_path_ref}" worktree add --quiet -b "${branch}" "${repo_tmp_path}" "${wanted_hash}"
+        printf -v repo_path_escaped '%q' "${repo_path_ref}"
+        printf -v repo_tmp_path_escaped '%q' "${repo_tmp_path}"
+        printf -v branch_escaped '%q' "${branch}"
+        traps+="; git -C ${repo_path_escaped} worktree remove ${repo_tmp_path_escaped}; git -C ${repo_path_escaped} branch --quiet -D ${branch_escaped}"
         trap "${traps}" EXIT
+        repo_path_ref="${repo_tmp_path}"
+        unset -n repo_path_ref data_ref
     done
 fi
 
-COREOS_OVERLAY="${co}" PORTAGE_STABLE="${ps}" GENTOO="${g}" WORKDIR="${DATE}/wd" KEEP_WORKDIR=x "${CFWG}" >"${DATE}/txt"
+SCRIPTS="${s}" GENTOO="${g}" WORKDIR="${DATE}/wd" KEEP_WORKDIR=x "${CFWG}" >"${DATE}/txt"
 
-COREOS_OVERLAY="${co}" PORTAGE_STABLE="${ps}" GENTOO="${g}" JSON=x WORKDIR="${DATE}/wd" KEEP_WORKDIR=x "${CFWG}" >"${DATE}/json"
+SCRIPTS="${s}" GENTOO="${g}" JSON=x WORKDIR="${DATE}/wd" KEEP_WORKDIR=x "${CFWG}" >"${DATE}/json"
 
 if [[ "${PREV_DATE}" != '-' ]]; then
     output=()
