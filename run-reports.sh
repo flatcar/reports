@@ -77,7 +77,7 @@ if [[ -z "${RERUN}" ]]; then
         printf -v repo_path_escaped '%q' "${repo_path_ref}"
         printf -v repo_tmp_path_escaped '%q' "${repo_tmp_path}"
         printf -v branch_escaped '%q' "${branch}"
-        traps+="; git -C ${repo_path_escaped} worktree remove ${repo_tmp_path_escaped}; git -C ${repo_path_escaped} branch --quiet -D ${branch_escaped}"
+        traps="git -C ${repo_path_escaped} worktree remove ${repo_tmp_path_escaped}; git -C ${repo_path_escaped} branch --quiet -D ${branch_escaped}; ${traps}"
         trap "${traps}" EXIT
         repo_path_ref="${repo_tmp_path}"
         unset -n repo_path_ref data_ref
