@@ -52,7 +52,7 @@ if [[ -z "${RERUN}" ]]; then
     # log to find the latest commit from the specified DATE, so we can
     # reset the repo state to that commit. This will be passed to the
     # compare-flatcar-with-gentoo script.
-    unix_date="$(date --date "${DATE}" '+%s')"
+    unix_date="$(date --date "${DATE} next day" '+%s')"
     traps=':'
     for repo in scripts gentoo; do
         data_var_name="${repo}_data"
@@ -61,20 +61,21 @@ if [[ -z "${RERUN}" ]]; then
         declare -n repo_path_ref="${repo_path_var_name}"
         wanted_hash=''
         log_paths=( "${data_ref[@]:1}" )
-        # Note that commit_date here is only the date, no time.
-        while read -r commit_date commit_hash; do
-            commit_unix_date=$(date --date "${commit_date}" '+%s')
-            if [[ "${unix_date}" -ge "${commit_unix_date}" ]]; then
-                wanted_hash="${commit_hash}"
-                break
+        commit_date=''
+        commit_hash=''
+        while read -r line; do
+            if [[ -z "${commit_date}" ]]; then
+                commit_date="${line}"
+            else
+                commit_hash="${line}"
             fi
-        done < <(git -C "${repo_path_ref}" log --pretty=format:'%cd %H' --date='short-local' -- "${log_paths[@]}")
-        if [[ -z "${wanted_hash}" ]]; then
+        done < <(git -C "${repo_path_ref}" log -1 --until="${unix_date}" --pretty=format:'%cD%n%H%n' -- "${log_paths[@]}")
+        if [[ -z "${commit_hash}" ]]; then
             fail "Could not find a commit in ${repo} from ${DATE} or earlier"
         fi
         repo_tmp_path="${PWD}/$(mktemp --directory "./rr-${repo}-XXXXXXXXXX")"
         branch="rr/for-${DATE}"
-        git -C "${repo_path_ref}" worktree add --quiet -b "${branch}" "${repo_tmp_path}" "${wanted_hash}"
+        git -C "${repo_path_ref}" worktree add --quiet -b "${branch}" "${repo_tmp_path}" "${commit_hash}"
         printf -v repo_path_escaped '%q' "${repo_path_ref}"
         printf -v repo_tmp_path_escaped '%q' "${repo_tmp_path}"
         printf -v branch_escaped '%q' "${branch}"
