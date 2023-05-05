@@ -11,12 +11,24 @@ set -euo pipefail
 : ${DATE:="$(date --date='1 day ago' '+%F')"}
 : ${PREV_DATE:="$(date --date='8 days ago' '+%F')"}
 : ${RERUN:=}
+: ${VERBOSE:=}
 
 CFWG="$(dirname "${0}")/compare-flatcar-with-gentoo"
 
-fail() {
+stderr() {
     printf '%s\n' "${*}" >/dev/stderr
+}
+
+fail() {
+    stderr "${@}"
     exit 1
+}
+
+debug() {
+    if [[ -z "${VERBOSE}" ]]; then
+        return
+    fi
+    stderr "$@"
 }
 
 if [[ "${PREV_DATE}" != '-' ]] && [[ ! -e "${PREV_DATE}/json" ]]; then
@@ -46,7 +58,9 @@ gentoo_data=(
 )
 
 if [[ -z "${RERUN}" ]]; then
+    debug "Regenerating work data"
     if [[ -e "${DATE}" ]]; then
+        debug "Saving old ${DATE} as ${DATE}.old"
         rm -rf "${DATE}.old"
         mv "${DATE}"{,.old}
     fi
@@ -60,6 +74,7 @@ if [[ -z "${RERUN}" ]]; then
     unix_date="$(date --date "${DATE} next day" '+%s')"
     traps=':'
     for repo in scripts gentoo; do
+        debug "Setting up ${repo}"
         data_var_name="${repo}_data"
         declare -n data_ref="${data_var_name}"
         repo_path_var_name="${data_ref[0]}"
@@ -91,6 +106,7 @@ if [[ -z "${RERUN}" ]]; then
                 fi
                 fail "Could not find a commit in ${repo} from ${DATE} or earlier for path '${log_path}'"
             fi
+            debug "Found commit ${commit_hash} for ${log_path}"
             path_suffix=''
             if [[ "${log_path}" != '.' ]]; then
                 path_suffix="-$(basename "${log_path}")"
@@ -120,6 +136,7 @@ if [[ -z "${RERUN}" ]]; then
         if [[ ${#tmp_paths[@]} -eq 1 ]]; then
             repo_path_ref="${tmp_repos[0]}"
         else
+            debug "Setting up fake repo for ${repo}"
             fake_repo_path="${PWD}/$(mktemp --directory "./rr-${repo}-fake-XXXXXXXXXX")"
             printf -v fake_repo_path_escaped '%q' "${fake_repo_path}"
             traps="rmdir ${fake_repo_path_escaped}; ${traps}"
@@ -127,6 +144,7 @@ if [[ -z "${RERUN}" ]]; then
             idx=0
             while [[ ${idx} -lt ${#tmp_paths[@]} ]]; do
                 path=${tmp_paths[${idx}]}
+                debug "Setting up ${path} in the fake repo"
                 dot_fake_git_dir="${fake_repo_path}/.fake_git"
                 if [[ ! -d "${dot_fake_git_dir}" ]]; then
                     mkdir "${dot_fake_git_dir}"
@@ -185,11 +203,14 @@ if [[ -z "${RERUN}" ]]; then
     done
 fi
 
+debug "Invoking compare-flatcar-with-gentoo for text files"
 SCRIPTS="${s}" GENTOO="${g}" WORKDIR="${DATE}/wd" KEEP_WORKDIR=x "${CFWG}" >"${DATE}/txt"
 
+debug "Invoking compare-flatcar-with-gentoo for JSON files"
 SCRIPTS="${s}" GENTOO="${g}" JSON=x WORKDIR="${DATE}/wd" KEEP_WORKDIR=x "${CFWG}" >"${DATE}/json"
 
 if [[ "${PREV_DATE}" != '-' ]]; then
+    debug "Generating a diff against ${PREV_DATE}"
     output=()
     prev_json="${PREV_DATE}/json"
     this_json="${DATE}/json"
