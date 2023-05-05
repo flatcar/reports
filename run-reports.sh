@@ -4,7 +4,6 @@ set -euo pipefail
 
 : ${SCRIPTS:='../../scripts/main'}
 : ${GENTOO:='../../gentoo/master'}
-: ${CFWG:='../../flatcar-build-scripts/stuff/compare-flatcar-with-gentoo'}
 # I'm usually running reports on Friday, but reports should be based
 # on state of things from Thursday, thus 1 day ago. Also the diff is
 # made against the state from a week before, also from Thursday, thus
@@ -12,6 +11,8 @@ set -euo pipefail
 : ${DATE:="$(date --date='1 day ago' '+%F')"}
 : ${PREV_DATE:="$(date --date='8 days ago' '+%F')"}
 : ${RERUN:=}
+
+CFWG="$(dirname "${0}")/compare-flatcar-with-gentoo"
 
 fail() {
     printf '%s\n' "${*}" >/dev/stderr
