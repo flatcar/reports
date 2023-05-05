@@ -433,13 +433,13 @@ if [[ ! -e "${WORKDIR}/duplicated-pkgs" ]] || \
                    [[ ! -e "${WORKDIR}/${name}-hash" ]] || \
                    [[ ! -e "${WORKDIR}/${name}-date" ]]; then
                 repo="$(get_repo "${p}")"
-                debug "finding all packages in ${name} (${repo})"
-                find "${repo}" -mindepth 3 -name '*.ebuild' |
+                debug "Finding all packages in ${name} (${repo})"
+                find -H "${repo}" -mindepth 3 -name '*.ebuild' |
                     sed -e 's!/[^/]*$!!' |
                     sort -u |
                     cut_leading_dir "${repo}" >"${WORKDIR}/${name}-pkgs"
-                debug "finding all eclasses in ${name} (${repo})"
-                find "${repo}/eclass" -name '*.eclass' |
+                debug "Finding all eclasses in ${name} (${repo})"
+                find -H "${repo}/eclass" -name '*.eclass' |
                     sort |
                     cut_leading_dir "${repo}" >"${WORKDIR}/${name}-eclasses"
                 misc=()
