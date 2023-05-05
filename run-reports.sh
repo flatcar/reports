@@ -31,12 +31,17 @@ g="${GENTOO}"
 # rest - paths passed to git log
 scripts_data=(
     s
-    sdk_container/src/third_party/coreos-overlay/
-    sdk_container/src/third_party/portage-stable/
+    # must exist
+    sdk_container/src/third_party/coreos-overlay
+    sdk_container/src/third_party/portage-stable
+    '--'
+    # optional
+    '.github'
 )
 
 gentoo_data=(
     g
+    # must exist
     '.'
 )
 
@@ -65,7 +70,12 @@ if [[ -z "${RERUN}" ]]; then
         tmp_repos=()
         tmp_hashes=()
         tmp_dates=()
+        optional=
         for log_path in "${log_paths[@]}"; do
+            if [[ "${log_path}" = '--' ]]; then
+                optional=x
+                continue
+            fi
             commit_date=''
             commit_hash=''
             while read -r line; do
@@ -76,6 +86,9 @@ if [[ -z "${RERUN}" ]]; then
                 fi
             done < <(git -C "${repo_path_ref}" log -1 --until="${unix_date}" --pretty=format:'%cD%n%H%n' -- "${log_path}")
             if [[ -z "${commit_hash}" ]]; then
+                if [[ -n "${optional}" ]]; then
+                    continue
+                fi
                 fail "Could not find a commit in ${repo} from ${DATE} or earlier for path '${log_path}'"
             fi
             path_suffix=''
