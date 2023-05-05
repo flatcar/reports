@@ -500,8 +500,8 @@ get_max_version() {
 
     local repo
     local pkg_path_prefix
-    local -a ebuilds
-    local e
+    local -a ebuilds strict
+    local e s
     local version
     local result
     local -n max_version_ref="${max_version_name}"
@@ -516,20 +516,26 @@ get_max_version() {
 
         pkg_path_prefix="${repo}/${pkg}/$(get_pkg_name "${pkg}")-"
         ebuilds=( "${pkg_path_prefix}"*.ebuild )
+        strict=('x' '')
 
-        for e in "${ebuilds[@]}"; do
-            # strip prefix
-            version="$(cut_leading_path "${pkg_path_prefix}" <<<"${e}")"
-            # strip .ebuild
-            version="${version:0:-7}"
-            # ignore versions with 9999
-            if [[ "${version}" = *9999* ]]; then
-                continue
-            fi
-            result='='
-            gentoo_vercmp "${version}" "${max_version_ref}" result
-            if [[ "${result}" = '>'* ]]; then
-                max_version_ref="${version}"
+        for s in "${strict[@]}"; do
+            for e in "${ebuilds[@]}"; do
+                # strip prefix
+                version="$(cut_leading_path "${pkg_path_prefix}" <<<"${e}")"
+                # strip .ebuild
+                version="${version:0:-7}"
+                # ignore versions with 9999 in strict mode
+                if [[ -n "${s}" ]] && [[ "${version}" = *9999* ]]; then
+                    continue
+                fi
+                result='='
+                gentoo_vercmp "${version}" "${max_version_ref}" result
+                if [[ "${result}" = '>'* ]]; then
+                    max_version_ref="${version}"
+                fi
+            done
+            if [[ "${max_version_ref}" != '0_alpha_alpha_alpha' ]]; then
+                break
             fi
         done
         return
