@@ -522,8 +522,8 @@ get_max_version() {
             version="$(cut_leading_path "${pkg_path_prefix}" <<<"${e}")"
             # strip .ebuild
             version="${version:0:-7}"
-            # ignore versions like 9999 or 99999999
-            if [[ -z "${version//9}" ]]; then
+            # ignore versions with 9999
+            if [[ "${version}" = *9999* ]]; then
                 continue
             fi
             result='='
