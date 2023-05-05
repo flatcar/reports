@@ -98,4 +98,4 @@ jobs:
           git config user.email 'buildbot@flatcar.org'
           git add "${DATE}"
           git commit -m "Report for ${DATE}"
-          git push origin "HEAD:${TARGET_BRANCH}"
+          git push origin "HEAD:${TARGET_BRANCH:-master}"
