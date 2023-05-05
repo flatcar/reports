@@ -449,8 +449,30 @@ if [[ ! -e "${WORKDIR}/duplicated-pkgs" ]] || \
                     fi
                 done
                 printf '%s\n' "${misc[@]}" >"${WORKDIR}/${name}-misc"
-                git -C "${repo}" log -1 --pretty='%H' >"${WORKDIR}/${name}-hash"
-                git -C "${repo}" log -1 --pretty='%cD' >"${WORKDIR}/${name}-date"
+                if [[ -e "${repo}/.git" ]]; then
+                    git -C "${repo}" log -1 --pretty='%H' >"${WORKDIR}/${name}-hash"
+                    git -C "${repo}" log -1 --pretty='%cD' >"${WORKDIR}/${name}-date"
+                else
+                    fake_git_search_dir="${repo}"
+                    while true; do
+                        if [[ -d "${fake_git_search_dir}/.fake_git" ]]; then
+                            if [[ -f "${fake_git_search_dir}/.fake_git/${name}.hash" ]]; then
+                                cp -a "${fake_git_search_dir}/.fake_git/${name}.hash" "${WORKDIR}/${name}-hash"
+                            fi
+                            if [[ -f "${fake_git_search_dir}/.fake_git/${name}.date" ]]; then
+                                cp -a "${fake_git_search_dir}/.fake_git/${name}.date" "${WORKDIR}/${name}-date"
+                            fi
+                            break
+                        fi
+                        if [[ "${fake_git_search_dir}" = '/' ]]; then
+                            warn "No fake git info found for ${name}"
+                            echo '?' >"${WORKDIR}/${name}-hash"
+                            echo '?' >"${WORKDIR}/${name}-date"
+                            break
+                        fi
+                        fake_git_search_dir="$(dirname "${fake_git_search_dir}")"
+                    done
+                fi
             fi
         done
 

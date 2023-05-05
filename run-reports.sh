@@ -61,27 +61,113 @@ if [[ -z "${RERUN}" ]]; then
         declare -n repo_path_ref="${repo_path_var_name}"
         wanted_hash=''
         log_paths=( "${data_ref[@]:1}" )
-        commit_date=''
-        commit_hash=''
-        while read -r line; do
-            if [[ -z "${commit_date}" ]]; then
-                commit_date="${line}"
-            else
-                commit_hash="${line}"
+        tmp_paths=()
+        tmp_repos=()
+        tmp_hashes=()
+        tmp_dates=()
+        for log_path in "${log_paths[@]}"; do
+            commit_date=''
+            commit_hash=''
+            while read -r line; do
+                if [[ -z "${commit_date}" ]]; then
+                    commit_date="${line}"
+                else
+                    commit_hash="${line}"
+                fi
+            done < <(git -C "${repo_path_ref}" log -1 --until="${unix_date}" --pretty=format:'%cD%n%H%n' -- "${log_path}")
+            if [[ -z "${commit_hash}" ]]; then
+                fail "Could not find a commit in ${repo} from ${DATE} or earlier for path '${log_path}'"
             fi
-        done < <(git -C "${repo_path_ref}" log -1 --until="${unix_date}" --pretty=format:'%cD%n%H%n' -- "${log_paths[@]}")
-        if [[ -z "${commit_hash}" ]]; then
-            fail "Could not find a commit in ${repo} from ${DATE} or earlier"
+            path_suffix=''
+            if [[ "${log_path}" != '.' ]]; then
+                path_suffix="-$(basename "${log_path}")"
+            fi
+            branch="rr/for-${DATE}${path_suffix}-${RANDOM}"
+            repo_tmp_path="${PWD}/$(mktemp --directory "./rr-${repo}${path_suffix}-XXXXXXXXXX")"
+            git -C "${repo_path_ref}" worktree add --quiet -b "${branch}" "${repo_tmp_path}" "${commit_hash}"
+            printf -v repo_path_escaped '%q' "${repo_path_ref}"
+            printf -v repo_tmp_path_escaped '%q' "${repo_tmp_path}"
+            printf -v branch_escaped '%q' "${branch}"
+            traps="git -C ${repo_path_escaped} worktree remove ${repo_tmp_path_escaped}; git -C ${repo_path_escaped} branch --quiet -D ${branch_escaped}; ${traps}"
+            trap "${traps}" EXIT
+            tmp_paths+=("${log_path}")
+            tmp_repos+=("${repo_tmp_path}")
+            tmp_hashes+=("${commit_hash}")
+            tmp_dates+=("${commit_date}")
+        done
+        if [[ ${#tmp_repos[@]} -ne ${#tmp_paths[@]} ]]; then
+            fail "Inconsistent number of repos for ${repo}"
         fi
-        repo_tmp_path="${PWD}/$(mktemp --directory "./rr-${repo}-XXXXXXXXXX")"
-        branch="rr/for-${DATE}"
-        git -C "${repo_path_ref}" worktree add --quiet -b "${branch}" "${repo_tmp_path}" "${commit_hash}"
-        printf -v repo_path_escaped '%q' "${repo_path_ref}"
-        printf -v repo_tmp_path_escaped '%q' "${repo_tmp_path}"
-        printf -v branch_escaped '%q' "${branch}"
-        traps="git -C ${repo_path_escaped} worktree remove ${repo_tmp_path_escaped}; git -C ${repo_path_escaped} branch --quiet -D ${branch_escaped}; ${traps}"
-        trap "${traps}" EXIT
-        repo_path_ref="${repo_tmp_path}"
+        if [[ ${#tmp_hashes[@]} -ne ${#tmp_paths[@]} ]]; then
+            fail "Inconsistent number of hash info entries for ${repo}"
+        fi
+        if [[ ${#tmp_dates[@]} -ne ${#tmp_paths[@]} ]]; then
+            fail "Inconsistent number of date info entries for ${repo}"
+        fi
+        if [[ ${#tmp_paths[@]} -eq 1 ]]; then
+            repo_path_ref="${tmp_repos[0]}"
+        else
+            fake_repo_path="${PWD}/$(mktemp --directory "./rr-${repo}-fake-XXXXXXXXXX")"
+            printf -v fake_repo_path_escaped '%q' "${fake_repo_path}"
+            traps="rmdir ${fake_repo_path_escaped}; ${traps}"
+            trap "${traps}" EXIT
+            idx=0
+            while [[ ${idx} -lt ${#tmp_paths[@]} ]]; do
+                path=${tmp_paths[${idx}]}
+                dot_fake_git_dir="${fake_repo_path}/.fake_git"
+                if [[ ! -d "${dot_fake_git_dir}" ]]; then
+                    mkdir "${dot_fake_git_dir}"
+                    printf -v dot_fake_git_dir_escaped '%q' "${dot_fake_git_dir}"
+                    traps="rmdir ${dot_fake_git_dir_escaped}; ${traps}"
+                    trap "${traps}" EXIT
+                fi
+                fake_hash_base="${dot_fake_git_dir}/$(basename "${path}")"
+                fake_hash_file="${fake_hash_base}.hash"
+                echo "${tmp_hashes[${idx}]}" >"${fake_hash_file}"
+                printf -v fake_hash_file_escaped '%q' "${fake_hash_file}"
+                traps="rm ${fake_hash_file_escaped}; ${traps}"
+                trap "${traps}" EXIT
+                fake_date_file="${fake_hash_base}.date"
+                echo "${tmp_dates[${idx}]}" >"${fake_date_file}"
+                printf -v fake_date_file_escaped '%q' "${fake_date_file}"
+                traps="rm ${fake_date_file_escaped}; ${traps}"
+                trap "${traps}" EXIT
+                dir_part=${path%/*}
+                prev=''
+                rest="${dir_part}"
+                while [[ -n "${rest}" ]]; do
+                    dir=${rest%%/*}
+                    rest=${rest#${dir}}
+                    rest=${rest#/}
+                    full_dir=${prev}${prev:+/}${dir}
+                    prev="${full_dir}"
+                    full_path="${fake_repo_path}/${full_dir}"
+                    if [[ -e "${full_path}" ]]; then
+                        if [[ ! -d "${full_path}" ]]; then
+                            fail "${full_path} is not a directory"
+                        fi
+                    else
+                        mkdir "${full_path}"
+                        printf -v full_path_escaped '%q' "${full_path}"
+                        traps="rmdir ${full_path_escaped}; ${traps}"
+                        trap "${traps}" EXIT
+                    fi
+                done
+                fake_full_path="${fake_repo_path}/${path}"
+                if [[ -e "${fake_full_path}" ]]; then
+                    if [[ ! -h "${fake_full_path}" ]]; then
+                        fail "${fake_full_path} is not a symlink"
+                    fi
+                else
+                    ln -sT "${tmp_repos[${idx}]}/${path}" "${fake_full_path}"
+                    printf -v fake_full_path_escaped '%q' "${fake_full_path}"
+                    traps="rm ${fake_full_path_escaped}; ${traps}"
+                    trap "${traps}" EXIT
+                fi
+                idx=$((idx + 1))
+            done
+            repo_path_ref="${fake_repo_path}"
+        fi
         unset -n repo_path_ref data_ref
     done
 fi
