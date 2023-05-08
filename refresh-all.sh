@@ -25,8 +25,8 @@ for d in *; do
         continue
     fi
     # If you need custom paths to coreos-overlay, gentoo,
-    # portage-stable or compare-flatcar-with-gentoo, pass them through
-    # environment variables.
+    # portage-stable or scripts, pass them through environment
+    # variables.
     echo "Refreshing reports for date ${d} (previous date: ${pd})"
     RERUN=${rerun} DATE="${d}" PREV_DATE="${pd}" ./run-reports.sh
     pd="${d}"
