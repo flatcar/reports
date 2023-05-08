@@ -95,7 +95,7 @@ app-eselect/eselect-vi gentoo:1.2 flatcar:1.2 result:=
 app-misc/c_rehash gentoo:1.7-r1 flatcar:1.7-r1 result:=
 app-misc/editor-wrapper gentoo:4-r1 flatcar:4-r1 result:=
 app-misc/jq gentoo:1.7_pre20201109-r1 flatcar:1.7_pre20201109 result:>r0
-app-misc/mime-types gentoo:2.1.53 flatcar:0_alpha_alpha_alpha result:>v0n
+app-misc/mime-types gentoo:2.1.53 flatcar:9 result:<v0n
 app-misc/pax-utils gentoo:1.3.5 flatcar:1.3.3 result:>v2n
 app-misc/zisofs-tools gentoo:1.0.8 flatcar:1.0.8 result:=
 app-portage/elt-patches gentoo:20220831 flatcar:20211104 result:>v0n
@@ -142,7 +142,7 @@ dev-libs/libaio gentoo:0.3.113 flatcar:0.3.112 result:>v2n
 dev-libs/libassuan gentoo:2.5.5 flatcar:2.5.5 result:=
 dev-libs/libbsd gentoo:0.11.7 flatcar:0.11.5 result:>v2n
 dev-libs/libev gentoo:4.33 flatcar:4.33 result:=
-dev-libs/libevent gentoo:2.1.9999 flatcar:2.1.9999 result:=
+dev-libs/libevent gentoo:2.1.12 flatcar:2.1.12 result:=
 dev-libs/libffi gentoo:3.4.4 flatcar:3.4.2-r1 result:>v2n
 dev-libs/libgcrypt gentoo:1.10.1-r2 flatcar:1.9.4 result:>v1n
 dev-libs/libgpg-error gentoo:1.46-r1 flatcar:1.42 result:>v1n
@@ -186,7 +186,7 @@ dev-python/distro gentoo:1.8.0 flatcar:1.7.0 result:>v1n
 dev-python/docutils gentoo:0.19 flatcar:0.18.1 result:>v1n
 dev-python/fasteners gentoo:0.18 flatcar:0.18 result:=
 dev-python/flit_core gentoo:3.7.1 flatcar:3.7.1 result:=
-dev-python/gpep517 gentoo:0_alpha_alpha_alpha flatcar:6 result:<v0n
+dev-python/gpep517 gentoo:9 flatcar:6 result:>v0n
 dev-python/importlib_metadata gentoo:5.0.0 flatcar:4.11.3 result:>v0n
 dev-python/installer gentoo:0.5.1-r1 flatcar:0.5.1 result:>r2
 dev-python/jaraco-context gentoo:4.1.2 flatcar:4.1.1-r2 result:>v2n
@@ -232,7 +232,7 @@ dev-util/perf gentoo:6.0 flatcar:6.0 result:=
 dev-util/pkgconf gentoo:1.9.3 flatcar:1.9.3 result:=
 dev-util/re2c gentoo:2.2 flatcar:2.2 result:=
 dev-util/strace gentoo:6.0 flatcar:5.19 result:>v0n
-dev-vcs/git gentoo:9999-r3 flatcar:9999-r3 result:=
+dev-vcs/git gentoo:2.38.1 flatcar:2.38.1 result:=
 dev-vcs/repo gentoo:2.29 flatcar:2.17 result:>v1n
 media-libs/libpng gentoo:1.6.38 flatcar:1.6.37-r2 result:>v2n
 net-analyzer/netperf gentoo:2.7.0-r4 flatcar:2.7.0-r3 result:>r2
@@ -334,7 +334,7 @@ sys-devel/binutils-config gentoo:5.4.1 flatcar:5.4.1 result:=
 sys-devel/bison gentoo:3.8.2 flatcar:3.8.2 result:=
 sys-devel/crossdev gentoo:20220818 flatcar:20220818 result:=
 sys-devel/flex gentoo:2.6.4-r4 flatcar:2.6.4-r2 result:>r2
-sys-devel/gcc gentoo:13.0.9999 flatcar:13.0.9999 result:=
+sys-devel/gcc gentoo:13.0.0_pre20221030 flatcar:13.0.0_pre20221002 result:>s0n
 sys-devel/gcc-config gentoo:2.8 flatcar:2.8 result:=
 sys-devel/gettext gentoo:0.21.1 flatcar:0.21.1 result:=
 sys-devel/gnuconfig gentoo:20221007 flatcar:20221007 result:=

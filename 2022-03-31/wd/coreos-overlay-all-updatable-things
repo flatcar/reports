@@ -155,6 +155,5 @@ sys-libs/timezone-data
 sys-process/audit
 sys-process/tini
 virtual/linux-sources
-virtual/rust
 x11-drivers/nvidia-drivers
 x11-drivers/nvidia-metadata

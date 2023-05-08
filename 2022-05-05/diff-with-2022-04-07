@@ -5,7 +5,7 @@ general:
  our packages: -2 (from 82 to 80)
  common packages: +1 (from 470 to 471)
  common packages in portage-stable: +1 (from 403 to 404)
- equal packages: -24 (from 298 to 274)
+ equal packages: -24 (from 297 to 273)
  outdated packages: +25 (from 167 to 192)
  outdated revision packages: +2 (from 17 to 19)
  outdated suffix packages: +1 (from 3 to 4)
@@ -14,7 +14,7 @@ general:
 portage-stable:
  total packages: +1 (from 403 to 404)
  common packages: +1 (from 403 to 404)
- equal packages: -22 (from 281 to 259)
+ equal packages: -22 (from 280 to 258)
  all outdated packages: +23 (from 121 to 144)
  outdated revision packages: +2 (from 15 to 17)
  outdated suffix packages: +1 (from 2 to 3)

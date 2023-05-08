@@ -93,7 +93,7 @@ app-eselect/eselect-vi gentoo:1.2 flatcar:1.2 result:=
 app-misc/c_rehash gentoo:1.7-r1 flatcar:1.7-r1 result:=
 app-misc/editor-wrapper gentoo:4-r1 flatcar:4-r1 result:=
 app-misc/jq gentoo:1.7_pre20201109 flatcar:1.7_pre20201109 result:=
-app-misc/mime-types gentoo:2.1.53 flatcar:0_alpha_alpha_alpha result:>v0n
+app-misc/mime-types gentoo:2.1.53 flatcar:9 result:<v0n
 app-misc/pax-utils gentoo:1.3.4 flatcar:1.3.3 result:>v2n
 app-misc/zisofs-tools gentoo:1.0.8 flatcar:1.0.8 result:=
 app-portage/elt-patches gentoo:20211104 flatcar:20211104 result:=
@@ -139,7 +139,7 @@ dev-libs/libaio gentoo:0.3.113 flatcar:0.3.112 result:>v2n
 dev-libs/libassuan gentoo:2.5.5 flatcar:2.5.5 result:=
 dev-libs/libbsd gentoo:0.11.6 flatcar:0.11.5 result:>v2n
 dev-libs/libev gentoo:4.33 flatcar:4.33 result:=
-dev-libs/libevent gentoo:2.1.9999 flatcar:2.1.9999 result:=
+dev-libs/libevent gentoo:2.1.12 flatcar:2.1.12 result:=
 dev-libs/libffi gentoo:3.4.2-r1 flatcar:3.4.2-r1 result:=
 dev-libs/libgcrypt gentoo:1.10.1 flatcar:1.9.4 result:>v1n
 dev-libs/libgpg-error gentoo:1.45 flatcar:1.42 result:>v1n
@@ -229,7 +229,7 @@ dev-util/pkgconf gentoo:1.8.0-r1 flatcar:1.8.0-r1 result:=
 dev-util/re2c gentoo:2.2 flatcar:2.2 result:=
 dev-util/scons gentoo:4.3.0 flatcar:4.1.0-r1 result:>v1n
 dev-util/strace gentoo:5.17 flatcar:5.13 result:>v1n
-dev-vcs/git gentoo:9999-r3 flatcar:9999-r3 result:=
+dev-vcs/git gentoo:2.36.1 flatcar:2.36.0 result:>v2n
 dev-vcs/repo gentoo:2.21 flatcar:2.17 result:>v1n
 media-libs/libpng gentoo:1.6.37-r2 flatcar:1.6.37-r2 result:=
 net-analyzer/netperf gentoo:2.7.0-r4 flatcar:2.7.0-r3 result:>r2
@@ -261,7 +261,7 @@ net-libs/nghttp2 gentoo:1.47.0 flatcar:1.47.0 result:=
 net-misc/bridge-utils gentoo:1.7.1-r1 flatcar:1.7.1-r1 result:=
 net-misc/curl gentoo:7.83.1 flatcar:7.83.1 result:=
 net-misc/ethertypes gentoo:0 flatcar:0 result:=
-net-misc/iperf gentoo:3.99999.99999 flatcar:3.99999.99999 result:=
+net-misc/iperf gentoo:3.11 flatcar:3.11 result:=
 net-misc/iputils gentoo:20211215 flatcar:20210722-r1 result:>v0n
 net-misc/rsync gentoo:3.2.4-r1 flatcar:3.2.4-r1 result:=
 net-misc/socat gentoo:2.0.0_beta9 flatcar:2.0.0_beta9 result:=
@@ -329,7 +329,7 @@ sys-devel/binutils-config gentoo:5.4.1 flatcar:5.4.1 result:=
 sys-devel/bison gentoo:3.8.2 flatcar:3.8.2 result:=
 sys-devel/crossdev gentoo:20220424 flatcar:20211027 result:>v0n
 sys-devel/flex gentoo:2.6.4-r1 flatcar:2.6.4-r1 result:=
-sys-devel/gcc gentoo:13.0.9999 flatcar:10.3.0-r2 result:>v0n
+sys-devel/gcc gentoo:13.0.0_pre20220529 flatcar:10.3.0-r2 result:>v0n
 sys-devel/gcc-config gentoo:2.5-r1 flatcar:2.5-r1 result:=
 sys-devel/gettext gentoo:0.21-r1 flatcar:0.21-r1 result:=
 sys-devel/gnuconfig gentoo:20220508 flatcar:20210107 result:>v0n

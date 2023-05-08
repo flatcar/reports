@@ -3,14 +3,14 @@ general:
  portage-stable: -1 (from 401 to 400)
  common packages: -1 (from 468 to 467)
  common packages in portage-stable: -1 (from 401 to 400)
- equal packages: -3 (from 278 to 275)
+ equal packages: -3 (from 277 to 274)
  outdated packages: +2 (from 186 to 188)
  outdated revision packages: +2 (from 19 to 21)
 
 portage-stable:
  total packages: -1 (from 401 to 400)
  common packages: -1 (from 401 to 400)
- equal packages: -4 (from 264 to 260)
+ equal packages: -4 (from 263 to 259)
  all outdated packages: +3 (from 137 to 140)
  outdated revision packages: +1 (from 16 to 17)
  outdated version packages: +2 (from 118 to 120)

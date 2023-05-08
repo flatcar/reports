@@ -50,7 +50,7 @@ sys-devel/gdb gentoo:11.2 flatcar:9.2-r1 result:>v0n
 sys-firmware/intel-microcode gentoo:20220207_p20220207 flatcar:20220207_p20220207 result:=
 sys-fs/btrfs-progs gentoo:5.16.2 flatcar:5.15.1 result:>v1n
 sys-fs/lvm2 gentoo:2.03.14-r1 flatcar:2.02.188-r2 result:>v1n
-sys-fs/mdadm gentoo:4.2-r1 flatcar:4.2-r1 result:=
+sys-fs/mdadm gentoo:4.2-r1 flatcar:4.1 result:>v1n
 sys-kernel/dracut gentoo:055-r4 flatcar:055 result:>r0
 sys-libs/glibc gentoo:2.35-r2 flatcar:2.33-r10 result:>v1n
 sys-libs/ldb gentoo:2.5.0-r1 flatcar:2.3.0-r2 result:>v1n
@@ -63,5 +63,4 @@ sys-libs/timezone-data gentoo:2022a flatcar:2021a-r1 result:>v0n
 sys-process/audit gentoo:3.0.7-r1 flatcar:3.0.6 result:>v2n
 sys-process/tini gentoo:0.19.0-r1 flatcar:0.19.0-r1 result:=
 virtual/linux-sources gentoo:3-r6 flatcar:2-r2 result:>v0n
-virtual/rust gentoo:1.59.0 flatcar:1.59.0 result:=
 x11-drivers/nvidia-drivers gentoo:510.60.02 flatcar:510.47.03 result:>v1n

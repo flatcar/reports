@@ -105,7 +105,7 @@ app-eselect/eselect-vi gentoo:20221122 flatcar:1.2 result:>v0n
 app-misc/c_rehash gentoo:1.7-r1 flatcar:1.7-r1 result:=
 app-misc/editor-wrapper gentoo:4-r1 flatcar:4-r1 result:=
 app-misc/jq gentoo:1.7_pre20230210 flatcar:1.7_pre20201109 result:>s0n
-app-misc/mime-types gentoo:2.1.53 flatcar:0_alpha_alpha_alpha result:>v0n
+app-misc/mime-types gentoo:2.1.53 flatcar:9 result:<v0n
 app-misc/pax-utils gentoo:1.3.7 flatcar:1.3.3 result:>v2n
 app-misc/zisofs-tools gentoo:1.0.8-r1 flatcar:1.0.8 result:>r2
 app-portage/elt-patches gentoo:20221210 flatcar:20221210 result:=
@@ -154,7 +154,7 @@ dev-libs/libaio gentoo:0.3.113 flatcar:0.3.113 result:=
 dev-libs/libassuan gentoo:2.5.5 flatcar:2.5.5 result:=
 dev-libs/libbsd gentoo:0.11.7-r2 flatcar:0.11.5 result:>v2n
 dev-libs/libev gentoo:4.33 flatcar:4.33 result:=
-dev-libs/libevent gentoo:2.1.9999 flatcar:2.1.9999 result:=
+dev-libs/libevent gentoo:2.1.12-r1 flatcar:2.1.12 result:>r2
 dev-libs/libffi gentoo:3.4.4-r1 flatcar:3.4.2-r1 result:>v2n
 dev-libs/libgcrypt gentoo:1.10.2 flatcar:1.9.4 result:>v1n
 dev-libs/libgpg-error gentoo:1.47 flatcar:1.42 result:>v1n
@@ -246,7 +246,7 @@ dev-util/perf gentoo:6.2-r1 flatcar:6.2 result:>r1
 dev-util/pkgconf gentoo:1.9.4 flatcar:1.9.4 result:=
 dev-util/re2c gentoo:2.2 flatcar:2.2 result:=
 dev-util/strace gentoo:6.2 flatcar:6.2 result:=
-dev-vcs/git gentoo:9999-r3 flatcar:9999-r3 result:=
+dev-vcs/git gentoo:2.40.1 flatcar:2.40.0 result:>v2n
 dev-vcs/repo gentoo:2.30 flatcar:2.30 result:=
 media-libs/libpng gentoo:1.6.39 flatcar:1.6.39 result:=
 net-analyzer/netperf gentoo:2.7.0-r4 flatcar:2.7.0-r3 result:>r2
@@ -350,7 +350,7 @@ sys-devel/binutils-config gentoo:5.5 flatcar:5.5 result:=
 sys-devel/bison gentoo:3.8.2-r2 flatcar:3.8.2-r2 result:=
 sys-devel/crossdev gentoo:20230321 flatcar:20230209-r1 result:>v0n
 sys-devel/flex gentoo:2.6.4-r6 flatcar:2.6.4-r6 result:=
-sys-devel/gcc gentoo:14.0.0.9999 flatcar:13.0.1.9999 result:>v0n
+sys-devel/gcc gentoo:14.0.0_pre20230423 flatcar:13.0.1_pre20230326 result:>v0n
 sys-devel/gcc-config gentoo:2.10 flatcar:2.10 result:=
 sys-devel/gettext gentoo:0.21.1 flatcar:0.21.1 result:=
 sys-devel/gnuconfig gentoo:20230121 flatcar:20221007 result:>v0n

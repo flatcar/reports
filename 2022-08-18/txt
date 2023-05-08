@@ -1,6 +1,6 @@
 meta:
- portage-stable hash:                                            acd9a72004c41ad9bbf476eb70a779731bb8dfd0
- portage-stable date:                                            Thu, 18 Aug 2022 16:29:10 +0200
+ portage-stable hash:                                            4f79ce90f1686f9508fc356a5ff0c7fc4ee2d0b3
+ portage-stable date:                                            Thu, 18 Aug 2022 11:46:05 +0200
  coreos-overlay hash:                                            4ab77bd8f4b21c1ff9512e9f77a6372104bd2dda
  coreos-overlay date:                                            Thu, 18 Aug 2022 16:56:10 +0200
  gentoo hash:                                                    e677cbf834ed137136227d650a9acabef408cc8c
@@ -14,8 +14,8 @@ general:
  common packages:                                                477     (85.79%)
  common packages in portage-stable:                              411     (73.92%)
  common packages in coreos-overlay:                              66      (11.87%)
- newer packages:                                                 4       (.71%)
- equal packages:                                                 228     (41.00%)
+ newer packages:                                                 5       (.89%)
+ equal packages:                                                 227     (40.82%)
  outdated packages:                                              245     (44.06%)
  outdated revision packages:                                     42      (7.55%)
  outdated suffix packages:                                       5       (.89%)
@@ -24,8 +24,8 @@ general:
 portage-stable:
  total packages:                                                 411
  common packages:                                                411     (100.00%)
- newer packages:                                                 1       (.24%)
- equal packages:                                                 217     (52.79%)
+ newer packages:                                                 2       (.48%)
+ equal packages:                                                 216     (52.55%)
  all outdated packages:                                          193     (46.95%)
  outdated revision packages:                                     40      (9.73%)
  outdated suffix packages:                                       4       (.97%)

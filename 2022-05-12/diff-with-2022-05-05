@@ -1,13 +1,13 @@
 general:
  total packages: -1 (from 551 to 550)
  common packages: -1 (from 471 to 470)
- equal packages: +2 (from 274 to 276)
+ equal packages: +2 (from 273 to 275)
  outdated packages: -3 (from 192 to 189)
  outdated revision packages: +2 (from 19 to 21)
  outdated version packages: -5 (from 169 to 164)
 
 portage-stable:
- equal packages: +1 (from 259 to 260)
+ equal packages: +1 (from 258 to 259)
  all outdated packages: -1 (from 144 to 143)
  outdated revision packages: +2 (from 17 to 19)
  outdated version packages: -3 (from 124 to 121)

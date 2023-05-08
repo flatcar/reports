@@ -15,21 +15,21 @@ general:
  common packages in portage-stable:                              411     (73.92%)
  common packages in coreos-overlay:                              66      (11.87%)
  newer packages:                                                 5       (.89%)
- equal packages:                                                 227     (40.82%)
- outdated packages:                                              245     (44.06%)
+ equal packages:                                                 225     (40.46%)
+ outdated packages:                                              247     (44.42%)
  outdated revision packages:                                     52      (9.35%)
- outdated suffix packages:                                       5       (.89%)
- outdated version packages:                                      188     (33.81%)
+ outdated suffix packages:                                       6       (1.07%)
+ outdated version packages:                                      189     (33.99%)
 
 portage-stable:
  total packages:                                                 411
  common packages:                                                411     (100.00%)
  newer packages:                                                 2       (.48%)
- equal packages:                                                 214     (52.06%)
- all outdated packages:                                          195     (47.44%)
+ equal packages:                                                 212     (51.58%)
+ all outdated packages:                                          197     (47.93%)
  outdated revision packages:                                     49      (11.92%)
- outdated suffix packages:                                       4       (.97%)
- outdated version packages:                                      142     (34.54%)
+ outdated suffix packages:                                       5       (1.21%)
+ outdated version packages:                                      143     (34.79%)
 
 coreos-overlay:
  total packages:                                                 145

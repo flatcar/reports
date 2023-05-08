@@ -14,8 +14,8 @@ general:
  common packages:                                                470     (85.14%)
  common packages in portage-stable:                              403     (73.00%)
  common packages in coreos-overlay:                              67      (12.13%)
- newer packages:                                                 5       (.90%)
- equal packages:                                                 298     (53.98%)
+ newer packages:                                                 6       (1.08%)
+ equal packages:                                                 297     (53.80%)
  outdated packages:                                              167     (30.25%)
  outdated revision packages:                                     17      (3.07%)
  outdated suffix packages:                                       3       (.54%)
@@ -24,8 +24,8 @@ general:
 portage-stable:
  total packages:                                                 403
  common packages:                                                403     (100.00%)
- newer packages:                                                 1       (.24%)
- equal packages:                                                 281     (69.72%)
+ newer packages:                                                 2       (.49%)
+ equal packages:                                                 280     (69.47%)
  all outdated packages:                                          121     (30.02%)
  outdated revision packages:                                     15      (3.72%)
  outdated suffix packages:                                       2       (.49%)

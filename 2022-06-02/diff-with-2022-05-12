@@ -5,14 +5,14 @@ general:
  common packages: +5 (from 470 to 475)
  common packages in portage-stable: +5 (from 404 to 409)
  common packages in coreos-overlay: -1 (from 67 to 66)
- equal packages: +5 (from 276 to 281)
+ equal packages: +5 (from 275 to 280)
  outdated revision packages: +5 (from 21 to 26)
  outdated version packages: -5 (from 164 to 159)
 
 portage-stable:
  total packages: +5 (from 404 to 409)
  common packages: +5 (from 404 to 409)
- equal packages: +6 (from 260 to 266)
+ equal packages: +6 (from 259 to 265)
  all outdated packages: -1 (from 143 to 142)
  outdated revision packages: +5 (from 19 to 24)
  outdated version packages: -6 (from 121 to 115)

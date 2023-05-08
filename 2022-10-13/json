@@ -15,22 +15,22 @@
     "common packages": 477,
     "common packages in portage-stable": 409,
     "common packages in coreos-overlay": 68,
-    "newer packages": 5,
-    "equal packages": 240,
-    "outdated packages": 232,
+    "newer packages": 4,
+    "equal packages": 238,
+    "outdated packages": 235,
     "outdated revision packages": 42,
-    "outdated suffix packages": 5,
-    "outdated version packages": 185
+    "outdated suffix packages": 7,
+    "outdated version packages": 186
   },
   "portage-stable": {
     "total packages": 409,
     "common packages": 409,
-    "newer packages": 3,
-    "equal packages": 226,
-    "all outdated packages": 180,
+    "newer packages": 2,
+    "equal packages": 224,
+    "all outdated packages": 183,
     "outdated revision packages": 39,
-    "outdated suffix packages": 4,
-    "outdated version packages": 137
+    "outdated suffix packages": 6,
+    "outdated version packages": 138
   },
   "coreos-overlay": {
     "total packages": 147,
