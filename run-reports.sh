@@ -2,6 +2,18 @@
 
 set -euo pipefail
 
+# Thu Apr 13 12:22:25 2023 +0200 - when coreos-overlay and
+# portage-stable got merged into scripts. For dates older than this,
+# we will use the old coreos-overlay and portage-stable repos.
+MERGE_DATE='2023-04-13'
+UNIX_MERGE_DATE="$(date --date "${MERGE_DATE}" '+%s')"
+
+# Separate coreos-overlay and portage-stable are used for generating
+# reports from dates older before MERGE_DATE.
+: ${COREOS_OVERLAY:='../../coreos-overlay/main'}
+: ${PORTAGE_STABLE:='../../portage-stable/main'}
+# Scripts repo is used for generating reports for dates at or after
+# the MERGE_DATE.
 : ${SCRIPTS:='../../scripts/main'}
 : ${GENTOO:='../../gentoo/master'}
 # I'm usually running reports on Friday, but reports should be based
@@ -40,20 +52,24 @@ g="${GENTOO}"
 
 # data variables:
 # 0 - var name
-# rest - paths passed to git log
+# rest - triples of paths passed to git log, possible git repo to use if date is before MERGE_DATE, and path to get from the old repo
 scripts_data=(
     s
-    # must exist
+
     sdk_container/src/third_party/coreos-overlay
+    "${COREOS_OVERLAY}"
+    '.'
+
     sdk_container/src/third_party/portage-stable
-    '--'
-    # optional
-    '.github'
+    "${PORTAGE_STABLE}"
+    '.'
 )
 
 gentoo_data=(
     g
-    # must exist
+
+    '.'
+    '-'
     '.'
 )
 
@@ -80,47 +96,59 @@ if [[ -z "${RERUN}" ]]; then
         repo_path_var_name="${data_ref[0]}"
         declare -n repo_path_ref="${repo_path_var_name}"
         wanted_hash=''
-        log_paths=( "${data_ref[@]:1}" )
+        rest=( "${data_ref[@]:1}" )
         tmp_paths=()
         tmp_repos=()
+        tmp_src_paths=()
         tmp_hashes=()
         tmp_dates=()
-        optional=
-        for log_path in "${log_paths[@]}"; do
-            if [[ "${log_path}" = '--' ]]; then
-                optional=x
-                continue
-            fi
+        idx=0
+        while [[ $((idx + 2)) -lt "${#rest[@]}" ]]; do
+            #for log_path in "${log_paths[@]}"; do
+            target_path="${rest[$((idx + 0))]}"
+            old_repo="${rest[$((idx + 1))]}"
+            log_path_old_repo="${rest[$((idx + 2))]}"
+            idx=$((idx + 3))
             commit_date=''
             commit_hash=''
+            log_repo="${repo_path_ref}"
+            log_path="${target_path}"
+            repo_name_for_path="${repo}"
+            if [[ "${old_repo}" != '-' ]]; then
+                actual_unix_date="$(date --date "${DATE}" '+%s')"
+                if [[ "${actual_unix_date}" -lt "${UNIX_MERGE_DATE}" ]]; then
+                    debug "Will use the old, pre-submodules merge repo"
+                    log_repo="${old_repo}"
+                    log_path="${log_path_old_repo}"
+                    repo_name_for_path="${target_path##*/}"
+                fi
+            fi
             while read -r line; do
                 if [[ -z "${commit_date}" ]]; then
                     commit_date="${line}"
                 else
                     commit_hash="${line}"
                 fi
-            done < <(git -C "${repo_path_ref}" log -1 --until="${unix_date}" --pretty=format:'%cD%n%H%n' -- "${log_path}")
+            done < <(git -C "${log_repo}" log -1 --until="${unix_date}" --pretty=format:'%cD%n%H%n' -- "${log_path}")
             if [[ -z "${commit_hash}" ]]; then
-                if [[ -n "${optional}" ]]; then
-                    continue
-                fi
-                fail "Could not find a commit in ${repo} from ${DATE} or earlier for path '${log_path}'"
+                fail "Could not find a commit in ${log_repo} from ${DATE} or earlier for path '${log_path}'"
             fi
-            debug "Found commit ${commit_hash} for ${log_path}"
-            path_suffix=''
+            debug "Found commit ${commit_hash} for ${target_path}"
+            path_suffix='-whole-thing'
             if [[ "${log_path}" != '.' ]]; then
                 path_suffix="-$(basename "${log_path}")"
             fi
             branch="rr/for-${DATE}${path_suffix}-${RANDOM}"
-            repo_tmp_path="${PWD}/$(mktemp --directory "./rr-${repo}${path_suffix}-XXXXXXXXXX")"
-            git -C "${repo_path_ref}" worktree add --quiet -b "${branch}" "${repo_tmp_path}" "${commit_hash}"
-            printf -v repo_path_escaped '%q' "${repo_path_ref}"
+            repo_tmp_path="${PWD}/$(mktemp --directory "./rr-${repo_name_for_path}${path_suffix}-XXXXXXXXXX")"
+            git -C "${log_repo}" worktree add --quiet -b "${branch}" "${repo_tmp_path}" "${commit_hash}"
+            printf -v log_repo_escaped '%q' "${log_repo}"
             printf -v repo_tmp_path_escaped '%q' "${repo_tmp_path}"
             printf -v branch_escaped '%q' "${branch}"
-            traps="git -C ${repo_path_escaped} worktree remove ${repo_tmp_path_escaped}; git -C ${repo_path_escaped} branch --quiet -D ${branch_escaped}; ${traps}"
+            traps="git -C ${log_repo_escaped} worktree remove ${repo_tmp_path_escaped}; git -C ${log_repo_escaped} branch --quiet -D ${branch_escaped}; ${traps}"
             trap "${traps}" EXIT
-            tmp_paths+=("${log_path}")
+            tmp_paths+=("${target_path}")
             tmp_repos+=("${repo_tmp_path}")
+            tmp_src_paths+=("${log_path}")
             tmp_hashes+=("${commit_hash}")
             tmp_dates+=("${commit_date}")
         done
@@ -129,6 +157,9 @@ if [[ -z "${RERUN}" ]]; then
         fi
         if [[ ${#tmp_hashes[@]} -ne ${#tmp_paths[@]} ]]; then
             fail "Inconsistent number of hash info entries for ${repo}"
+        fi
+        if [[ ${#tmp_src_paths[@]} -ne ${#tmp_paths[@]} ]]; then
+            fail "Inconsistent number of source path entries for ${repo}"
         fi
         if [[ ${#tmp_dates[@]} -ne ${#tmp_paths[@]} ]]; then
             fail "Inconsistent number of date info entries for ${repo}"
@@ -144,7 +175,7 @@ if [[ -z "${RERUN}" ]]; then
             idx=0
             while [[ ${idx} -lt ${#tmp_paths[@]} ]]; do
                 path=${tmp_paths[${idx}]}
-                debug "Setting up ${path} in the fake repo"
+                debug "Setting up fake git data in the fake repo"
                 dot_fake_git_dir="${fake_repo_path}/.fake_git"
                 if [[ ! -d "${dot_fake_git_dir}" ]]; then
                     mkdir "${dot_fake_git_dir}"
@@ -163,6 +194,7 @@ if [[ -z "${RERUN}" ]]; then
                 printf -v fake_date_file_escaped '%q' "${fake_date_file}"
                 traps="rm ${fake_date_file_escaped}; ${traps}"
                 trap "${traps}" EXIT
+                debug "Setting up ${path} in the fake repo"
                 dir_part=${path%/*}
                 prev=''
                 rest="${dir_part}"
@@ -190,7 +222,7 @@ if [[ -z "${RERUN}" ]]; then
                         fail "${fake_full_path} is not a symlink"
                     fi
                 else
-                    ln -sT "${tmp_repos[${idx}]}/${path}" "${fake_full_path}"
+                    ln -sT "${tmp_repos[${idx}]}/${tmp_src_paths[${idx}]}" "${fake_full_path}"
                     printf -v fake_full_path_escaped '%q' "${fake_full_path}"
                     traps="rm ${fake_full_path_escaped}; ${traps}"
                     trap "${traps}" EXIT
