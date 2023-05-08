@@ -488,8 +488,14 @@ if [[ ! -e "${WORKDIR}/duplicated-pkgs" ]] || \
     cat "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/coreos-overlay-eclasses" "${WORKDIR}/coreos-overlay-misc" | sort >"${WORKDIR}/coreos-overlay-all-updatable-things"
 
     debug "Finding all updatable things under automation in portage-stable"
+    ps_automated_packages_file=''
     if [[ -e "${SCRIPTS}/.github/workflows/portage-stable-packages-list" ]]; then
-        grep '^[^#]' "${SCRIPTS}/.github/workflows/portage-stable-packages-list" | sort >"${WORKDIR}/portage-stable-under-automation"
+        ps_automated_packages_file="${SCRIPTS}/.github/workflows/portage-stable-packages-list"
+    elif [[ -e "${PORTAGE_STABLE}/.github/workflows/packages-list" ]]; then
+        ps_automated_packages_file="${PORTAGE_STABLE}/.github/workflows/packages-list"
+    fi
+    if [[ -n "${ps_automated_packages_file}" ]]; then
+        grep '^[^#]' "${ps_automated_packages_file}" | sort >"${WORKDIR}/portage-stable-under-automation"
     else
         touch "${WORKDIR}/portage-stable-under-automation"
     fi
