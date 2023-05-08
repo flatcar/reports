@@ -66,20 +66,12 @@ jobs:
           path: gentoo
           ref: master
           fetch-depth: 20000
-      - name: Check out flatcar-build-scripts
-        if: steps.validate-dates.outputs.ok == 1
-        uses: actions/checkout@v3
-        with:
-          repository: flatcar/flatcar-build-scripts
-          path: flatcar-build-scripts
-          ref: krnowak/stuff
       - name: Run reports
         if: steps.validate-dates.outputs.ok == 1
         env:
           # paths are relative to the reports directory
           SCRIPTS: ../scripts
           GENTOO: ../gentoo
-          CFWG: ../flatcar-build-scripts/compare-flatcar-with-gentoo
           PREV_DATE: ${{ steps.last-report-date.outputs.date }}
           DATE: ${{ steps.new-report-date.outputs.date }}
         run: |
