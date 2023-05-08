@@ -100,7 +100,7 @@ fi
 
 debug "Scripts git repo is ${SCRIPTS}"
 debug "Portage-stable ebuild repo is ${PORTAGE_STABLE}"
-debug "Coreos overlay ebuild repo is =${COREOS_OVERLAY}"
+debug "Coreos overlay ebuild repo is ${COREOS_OVERLAY}"
 debug "Gentoo git/ebuild repo is ${GENTOO}"
 
 prepend_with() {
