@@ -107,8 +107,8 @@ app-emulation/docker-cli
 app-emulation/docker-proxy
 app-emulation/docker-runc
 app-emulation/google-compute-engine
-app-emulation/open-vmdk
 app-emulation/open-vm-tools
+app-emulation/open-vmdk
 app-emulation/qemu
 app-emulation/wa-linux-agent
 app-emulation/xenserver-pv-version
@@ -120,8 +120,8 @@ app-eselect/eselect-pinentry
 app-eselect/eselect-python
 app-eselect/eselect-rust
 app-eselect/eselect-vi
-app-misc/ca-certificates
 app-misc/c_rehash
+app-misc/ca-certificates
 app-misc/editor-wrapper
 app-misc/jq
 app-misc/mime-types
@@ -174,8 +174,8 @@ coreos-base/oem-vagrant-key
 coreos-base/oem-vagrant-virtualbox
 coreos-base/oem-virtualbox
 coreos-base/oem-vmware
-coreos-base/update_engine
 coreos-base/update-ssh-keys
+coreos-base/update_engine
 coreos-devel/board-packages
 coreos-devel/fero-client
 coreos-devel/kola-data
@@ -251,12 +251,12 @@ dev-libs/popt
 dev-libs/protobuf
 dev-libs/userspace-rcu
 dev-perl/File-Slurp
-dev-perl/libintl-perl
 dev-perl/Locale-gettext
 dev-perl/Parse-Yapp
 dev-perl/Text-Unidecode
 dev-perl/Unicode-EastAsianWidth
 dev-perl/XML-Parser
+dev-perl/libintl-perl
 dev-python/astroid
 dev-python/boto
 dev-python/certifi

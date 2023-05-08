@@ -110,8 +110,8 @@ app-eselect/eselect-pinentry
 app-eselect/eselect-python
 app-eselect/eselect-rust
 app-eselect/eselect-vi
-app-misc/ca-certificates
 app-misc/c_rehash
+app-misc/ca-certificates
 app-misc/editor-wrapper
 app-misc/jq
 app-misc/mime-types

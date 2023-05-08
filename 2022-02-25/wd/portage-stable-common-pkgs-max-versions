@@ -164,12 +164,12 @@ dev-libs/popt gentoo:1.18 flatcar:1.18 result:=
 dev-libs/protobuf gentoo:3.19.3 flatcar:3.5.2 result:>v1n
 dev-libs/userspace-rcu gentoo:0.13.1 flatcar:0.9.2 result:>v1n
 dev-perl/File-Slurp gentoo:9999.320.0 flatcar:9999.320.0 result:=
-dev-perl/libintl-perl gentoo:1.320.0 flatcar:1.280.0 result:>v1n
 dev-perl/Locale-gettext gentoo:1.70.0-r1 flatcar:1.70.0 result:>r2
 dev-perl/Parse-Yapp gentoo:1.210.0-r1 flatcar:1.210.0 result:>r2
 dev-perl/Text-Unidecode gentoo:1.300.0-r1 flatcar:1.300.0 result:>r2
 dev-perl/Unicode-EastAsianWidth gentoo:12.0.0 flatcar:1.330.0-r1 result:>v0n
 dev-perl/XML-Parser gentoo:2.460.0-r2 flatcar:2.440.0 result:>v1n
+dev-perl/libintl-perl gentoo:1.320.0 flatcar:1.280.0 result:>v1n
 dev-python/astroid gentoo:2.9.3 flatcar:2.6.2 result:>v1n
 dev-python/certifi gentoo:3021.3.16-r1 flatcar:3021.3.16-r1 result:=
 dev-python/crcmod gentoo:1.7-r5 flatcar:1.7-r4 result:>r1

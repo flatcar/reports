@@ -56,8 +56,8 @@ coreos-base/oem-vagrant-key
 coreos-base/oem-vagrant-virtualbox
 coreos-base/oem-virtualbox
 coreos-base/oem-vmware
-coreos-base/update_engine
 coreos-base/update-ssh-keys
+coreos-base/update_engine
 coreos-devel/board-packages
 coreos-devel/fero-client
 coreos-devel/sdk-depends

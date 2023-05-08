@@ -1,11 +1,11 @@
 {
   "meta": {
-    "portage-stable hash": "6d31354e9f0acdc74f7e32d5e74c4cf70ced2056",
-    "portage-stable date": "Thu, 4 May 2023 12:05:52 +0200",
-    "coreos-overlay hash": "6d31354e9f0acdc74f7e32d5e74c4cf70ced2056",
-    "coreos-overlay date": "Thu, 4 May 2023 12:05:52 +0200",
-    "gentoo hash": "420fe5065452841c64f7b6ddbf82b2270a9f9838",
-    "gentoo date": "Fri, 5 May 2023 00:32:08 +0100"
+    "portage-stable hash": "7f912c337645999c82d29c756b7a804c526f052e",
+    "portage-stable date": "Thu, 4 May 2023 16:36:40 +0200",
+    "coreos-overlay hash": "982c6098d1d9d4ce55956843a0e52f92c1a50254",
+    "coreos-overlay date": "Thu, 4 May 2023 07:54:53 +0000",
+    "gentoo hash": "d587eef9baa0bff2161ea2aae5b5b122f85c8a1e",
+    "gentoo date": "Thu, 4 May 2023 23:47:56 +0200"
   },
   "general": {
     "total packages": 571,
@@ -18,9 +18,9 @@
     "newer packages": 4,
     "equal packages": 300,
     "outdated packages": 188,
-    "outdated revision packages": 34,
-    "outdated suffix packages": 4,
-    "outdated version packages": 150
+    "outdated revision packages": 35,
+    "outdated suffix packages": 5,
+    "outdated version packages": 148
   },
   "portage-stable": {
     "total packages": 430,
@@ -28,9 +28,9 @@
     "newer packages": 2,
     "equal packages": 292,
     "all outdated packages": 136,
-    "outdated revision packages": 29,
-    "outdated suffix packages": 4,
-    "outdated version packages": 103
+    "outdated revision packages": 30,
+    "outdated suffix packages": 5,
+    "outdated version packages": 101
   },
   "coreos-overlay": {
     "total packages": 141,
@@ -44,9 +44,9 @@
   },
   "automation": {
     "total updatable things": 684,
-    "total updatable things under automation": 336,
+    "total updatable things under automation": 343,
     "updatable things in portage-stable": 532,
-    "updatable things under automation in portage-stable": 336,
+    "updatable things under automation in portage-stable": 343,
     "updatable things in coreos-overlay": 152,
     "updatable things under automation in coreos-overlay": 0
   }

@@ -172,11 +172,11 @@ dev-libs/popt
 dev-libs/protobuf
 dev-libs/userspace-rcu
 dev-perl/File-Slurp
-dev-perl/libintl-perl
 dev-perl/Locale-gettext
 dev-perl/Parse-Yapp
 dev-perl/Text-Unidecode
 dev-perl/Unicode-EastAsianWidth
+dev-perl/libintl-perl
 dev-python/appdirs
 dev-python/certifi
 dev-python/crcmod

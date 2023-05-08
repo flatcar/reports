@@ -188,8 +188,8 @@ eclass/acct-user.eclass
 eclass/alternatives.eclass
 eclass/app-alternatives.eclass
 eclass/autotools.eclass
-eclass/cmake.eclass
 eclass/cmake-multilib.eclass
+eclass/cmake.eclass
 eclass/desktop.eclass
 eclass/distutils-r1.eclass
 eclass/eapi7-ver.eclass
@@ -214,12 +214,12 @@ eclass/linux-info.eclass
 eclass/linux-mod.eclass
 eclass/llvm.eclass
 eclass/ltprune.eclass
-eclass/meson.eclass
 eclass/meson-multilib.eclass
+eclass/meson.eclass
 eclass/multibuild.eclass
 eclass/multilib-build.eclass
-eclass/multilib.eclass
 eclass/multilib-minimal.eclass
+eclass/multilib.eclass
 eclass/multiprocessing.eclass
 eclass/ninja-utils.eclass
 eclass/optfeature.eclass
@@ -241,8 +241,8 @@ eclass/savedconfig.eclass
 eclass/strip-linguas.eclass
 eclass/systemd.eclass
 eclass/tmpfiles.eclass
-eclass/toolchain.eclass
 eclass/toolchain-funcs.eclass
+eclass/toolchain.eclass
 eclass/udev.eclass
 eclass/user-info.eclass
 eclass/vcs-clean.eclass

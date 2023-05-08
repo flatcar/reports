@@ -41,8 +41,8 @@ dev-util/strace
 dev-vcs/git
 eclass/alternatives.eclass
 eclass/autotools.eclass
-eclass/cmake.eclass
 eclass/cmake-multilib.eclass
+eclass/cmake.eclass
 eclass/elisp-common.eclass
 eclass/flag-o-matic.eclass
 eclass/git-r3.eclass
@@ -56,15 +56,15 @@ eclass/linux-mod.eclass
 eclass/llvm.eclass
 eclass/meson.eclass
 eclass/multilib-build.eclass
-eclass/multilib.eclass
 eclass/multilib-minimal.eclass
+eclass/multilib.eclass
 eclass/ninja-utils.eclass
 eclass/optfeature.eclass
 eclass/pax-utils.eclass
 eclass/prefix.eclass
 eclass/tmpfiles.eclass
-eclass/toolchain.eclass
 eclass/toolchain-funcs.eclass
+eclass/toolchain.eclass
 eclass/verify-sig.eclass
 eclass/vim-doc.eclass
 eclass/vim-plugin.eclass
