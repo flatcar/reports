@@ -63,6 +63,12 @@ scripts_data=(
     sdk_container/src/third_party/portage-stable
     "${PORTAGE_STABLE}"
     '.'
+
+    '--' '-' '-'
+
+    '.github'
+    '-'
+    '-'
 )
 
 gentoo_data=(
@@ -103,12 +109,17 @@ if [[ -z "${RERUN}" ]]; then
         tmp_hashes=()
         tmp_dates=()
         idx=0
+        optional=
         while [[ $((idx + 2)) -lt "${#rest[@]}" ]]; do
             #for log_path in "${log_paths[@]}"; do
             target_path="${rest[$((idx + 0))]}"
             old_repo="${rest[$((idx + 1))]}"
             log_path_old_repo="${rest[$((idx + 2))]}"
             idx=$((idx + 3))
+            if [[ "${target_path}" = '--' ]]; then
+                optional=x
+                continue
+            fi
             commit_date=''
             commit_hash=''
             log_repo="${repo_path_ref}"
@@ -131,6 +142,9 @@ if [[ -z "${RERUN}" ]]; then
                 fi
             done < <(git -C "${log_repo}" log -1 --until="${unix_date}" --pretty=format:'%cD%n%H%n' -- "${log_path}")
             if [[ -z "${commit_hash}" ]]; then
+                if [[ -n "${optional}" ]]; then
+                    continue
+                fi
                 fail "Could not find a commit in ${log_repo} from ${DATE} or earlier for path '${log_path}'"
             fi
             debug "Found commit ${commit_hash} for ${target_path}"
@@ -196,6 +210,9 @@ if [[ -z "${RERUN}" ]]; then
                 trap "${traps}" EXIT
                 debug "Setting up ${path} in the fake repo"
                 dir_part=${path%/*}
+                if [[ "${dir_part}" = "${path}" ]]; then
+                    dir_part=''
+                fi
                 prev=''
                 rest="${dir_part}"
                 while [[ -n "${rest}" ]]; do
