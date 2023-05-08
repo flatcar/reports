@@ -414,6 +414,14 @@ cut_leading_dir() {
     cut_leading_path "${path}/"
 }
 
+csort() {
+    LC_ALL=C sort "${@}"
+}
+
+ccomm() {
+    LC_ALL=C comm "${@}"
+}
+
 if [[ ! -e "${WORKDIR}/duplicated-pkgs" ]] || \
        [[ ! -e "${WORKDIR}/portage-stable-all-updatable-things" ]] || \
        [[ ! -e "${WORKDIR}/coreos-overlay-all-updatable-things" ]] || \
@@ -436,11 +444,11 @@ if [[ ! -e "${WORKDIR}/duplicated-pkgs" ]] || \
                 debug "Finding all packages in ${name} (${repo})"
                 find -H "${repo}" -mindepth 3 -name '*.ebuild' |
                     sed -e 's!/[^/]*$!!' |
-                    sort -u |
+                    csort -u |
                     cut_leading_dir "${repo}" >"${WORKDIR}/${name}-pkgs"
                 debug "Finding all eclasses in ${name} (${repo})"
                 find -H "${repo}/eclass" -name '*.eclass' |
-                    sort |
+                    csort |
                     cut_leading_dir "${repo}" >"${WORKDIR}/${name}-eclasses"
                 misc=()
                 for m in 'scripts' 'licenses' 'profiles'; do
@@ -476,16 +484,16 @@ if [[ ! -e "${WORKDIR}/duplicated-pkgs" ]] || \
             fi
         done
 
-        cat "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/portage-stable-pkgs" | sort -u >"${WORKDIR}/flatcar-pkgs"
+        cat "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/portage-stable-pkgs" | csort -u >"${WORKDIR}/flatcar-pkgs"
     fi
 
     debug "Finding all duplicated packages in portage-stable and coreos-overlay"
-    comm -1 -2 "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/portage-stable-pkgs" >"${WORKDIR}/duplicated-pkgs"
+    ccomm -1 -2 "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/portage-stable-pkgs" >"${WORKDIR}/duplicated-pkgs"
 
     debug "Finding all updatable things in portage-stable"
-    cat "${WORKDIR}/portage-stable-pkgs" "${WORKDIR}/portage-stable-eclasses" "${WORKDIR}/portage-stable-misc" | sort >"${WORKDIR}/portage-stable-all-updatable-things"
+    cat "${WORKDIR}/portage-stable-pkgs" "${WORKDIR}/portage-stable-eclasses" "${WORKDIR}/portage-stable-misc" | csort >"${WORKDIR}/portage-stable-all-updatable-things"
     debug "Finding all updatable things in coreos-overlay"
-    cat "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/coreos-overlay-eclasses" "${WORKDIR}/coreos-overlay-misc" | sort >"${WORKDIR}/coreos-overlay-all-updatable-things"
+    cat "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/coreos-overlay-eclasses" "${WORKDIR}/coreos-overlay-misc" | csort >"${WORKDIR}/coreos-overlay-all-updatable-things"
 
     debug "Finding all updatable things under automation in portage-stable"
     ps_automated_packages_file=''
@@ -495,24 +503,24 @@ if [[ ! -e "${WORKDIR}/duplicated-pkgs" ]] || \
         ps_automated_packages_file="${PORTAGE_STABLE}/.github/workflows/packages-list"
     fi
     if [[ -n "${ps_automated_packages_file}" ]]; then
-        grep '^[^#]' "${ps_automated_packages_file}" | sort >"${WORKDIR}/portage-stable-under-automation"
+        grep '^[^#]' "${ps_automated_packages_file}" | csort >"${WORKDIR}/portage-stable-under-automation"
     else
         touch "${WORKDIR}/portage-stable-under-automation"
     fi
 
     debug "Finding all flatcar-only packages in portage-stable"
-    comm -2 -3 "${WORKDIR}/portage-stable-pkgs" "${WORKDIR}/gentoo-pkgs" >"${WORKDIR}/portage-stable-flatcar-only-pkgs"
+    ccomm -2 -3 "${WORKDIR}/portage-stable-pkgs" "${WORKDIR}/gentoo-pkgs" >"${WORKDIR}/portage-stable-flatcar-only-pkgs"
     debug "Finding all flatcar-only packages in coreos-overlay"
-    comm -2 -3 "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/gentoo-pkgs" >"${WORKDIR}/coreos-overlay-flatcar-only-pkgs"
+    ccomm -2 -3 "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/gentoo-pkgs" >"${WORKDIR}/coreos-overlay-flatcar-only-pkgs"
     debug "Finding all flatcar-only packages"
-    cat "${WORKDIR}/portage-stable-flatcar-only-pkgs" "${WORKDIR}/coreos-overlay-flatcar-only-pkgs" | sort -u >"${WORKDIR}/flatcar-only-pkgs"
+    cat "${WORKDIR}/portage-stable-flatcar-only-pkgs" "${WORKDIR}/coreos-overlay-flatcar-only-pkgs" | csort -u >"${WORKDIR}/flatcar-only-pkgs"
 
     debug "Finding all common packages in portage-stable"
-    comm -1 -2 "${WORKDIR}/portage-stable-pkgs" "${WORKDIR}/gentoo-pkgs" >"${WORKDIR}/portage-stable-common-pkgs"
+    ccomm -1 -2 "${WORKDIR}/portage-stable-pkgs" "${WORKDIR}/gentoo-pkgs" >"${WORKDIR}/portage-stable-common-pkgs"
     debug "Finding all common packages in coreos-overlay"
-    comm -1 -2 "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/gentoo-pkgs" >"${WORKDIR}/coreos-overlay-common-pkgs"
+    ccomm -1 -2 "${WORKDIR}/coreos-overlay-pkgs" "${WORKDIR}/gentoo-pkgs" >"${WORKDIR}/coreos-overlay-common-pkgs"
     debug "Finding all common packages"
-    cat "${WORKDIR}/coreos-overlay-common-pkgs" "${WORKDIR}/portage-stable-common-pkgs" | sort -u >"${WORKDIR}/common-pkgs"
+    cat "${WORKDIR}/coreos-overlay-common-pkgs" "${WORKDIR}/portage-stable-common-pkgs" | csort -u >"${WORKDIR}/common-pkgs"
 fi
 
 get_pkg_name() {
@@ -601,7 +609,7 @@ fi
 
 if [[ ! -e "${WORKDIR}/common-pkgs-max-versions" ]]; then
     debug "Finding max versions of common packages"
-    cat "${WORKDIR}/portage-stable-common-pkgs-max-versions" "${WORKDIR}/coreos-overlay-common-pkgs-max-versions" | sort -u >"${WORKDIR}/common-pkgs-max-versions"
+    cat "${WORKDIR}/portage-stable-common-pkgs-max-versions" "${WORKDIR}/coreos-overlay-common-pkgs-max-versions" | csort -u >"${WORKDIR}/common-pkgs-max-versions"
 fi
 
 debug "Data mining done, reports follow"
