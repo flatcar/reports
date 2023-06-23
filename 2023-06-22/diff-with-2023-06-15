@@ -1,0 +1,28 @@
+general:
+ total packages: -1 (from 571 to 570)
+ coreos-overlay: -1 (from 137 to 136)
+ our packages: -1 (from 73 to 72)
+ newer packages: -1 (from 6 to 5)
+ equal packages: -11 (from 333 to 322)
+ outdated packages: +12 (from 159 to 171)
+ outdated revision packages: +2 (from 31 to 33)
+ outdated suffix packages: +3 (from 6 to 9)
+ outdated version packages: +7 (from 122 to 129)
+
+portage-stable:
+ equal packages: -14 (from 325 to 311)
+ all outdated packages: +14 (from 108 to 122)
+ outdated revision packages: +2 (from 28 to 30)
+ outdated suffix packages: +3 (from 5 to 8)
+ outdated version packages: +9 (from 75 to 84)
+
+coreos-overlay:
+ total packages: -1 (from 137 to 136)
+ newer packages: -1 (from 5 to 4)
+ equal packages: +3 (from 8 to 11)
+ all outdated packages: -2 (from 51 to 49)
+ outdated version packages: -2 (from 47 to 45)
+
+automation:
+ total updatable things: -1 (from 684 to 683)
+ updatable things in coreos-overlay: -1 (from 148 to 147)
