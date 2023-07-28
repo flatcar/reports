@@ -1,0 +1,21 @@
+general:
+ newer packages: -1 (from 5 to 4)
+ outdated packages: +1 (from 229 to 230)
+ outdated suffix packages: -1 (from 10 to 9)
+ outdated version packages: +2 (from 125 to 127)
+
+portage-stable:
+ equal packages: -2 (from 255 to 253)
+ all outdated packages: +2 (from 180 to 182)
+ outdated suffix packages: -1 (from 8 to 7)
+ outdated version packages: +3 (from 79 to 82)
+
+coreos-overlay:
+ newer packages: -1 (from 4 to 3)
+ equal packages: +2 (from 10 to 12)
+ all outdated packages: -1 (from 49 to 48)
+ outdated version packages: -1 (from 46 to 45)
+
+automation:
+ total updatable things under automation: +1 (from 405 to 406)
+ updatable things under automation in portage-stable: +1 (from 405 to 406)
