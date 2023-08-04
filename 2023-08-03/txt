@@ -1,0 +1,50 @@
+meta:
+ portage-stable hash:                                            9c1f77919ab3082d7768a7dff4be96976ceba411
+ portage-stable date:                                            Tue, 1 Aug 2023 07:14:48 +0000
+ coreos-overlay hash:                                            69821be1c9b3a2a9466603e2b1bc63f5db5a709e
+ coreos-overlay date:                                            Thu, 3 Aug 2023 17:53:57 +0200
+ gentoo hash:                                                    5338e391c1fad7c69eb10d82c710bc6e37ce64ea
+ gentoo date:                                                    Fri, 4 Aug 2023 00:07:22 +0100
+
+general:
+ total packages:                                                 569
+ portage-stable:                                                 436     (76.62%)
+ coreos-overlay:                                                 133     (23.37%)
+ our packages:                                                   70      (12.30%)
+ common packages:                                                499     (87.69%)
+ common packages in portage-stable:                              436     (76.62%)
+ common packages in coreos-overlay:                              63      (11.07%)
+ newer packages:                                                 7       (1.23%)
+ equal packages:                                                 247     (43.40%)
+ outdated packages:                                              245     (43.05%)
+ outdated revision packages:                                     93      (16.34%)
+ outdated suffix packages:                                       8       (1.40%)
+ outdated version packages:                                      144     (25.30%)
+
+portage-stable:
+ total packages:                                                 436
+ common packages:                                                436     (100.00%)
+ newer packages:                                                 1       (.22%)
+ equal packages:                                                 236     (54.12%)
+ all outdated packages:                                          199     (45.64%)
+ outdated revision packages:                                     93      (21.33%)
+ outdated suffix packages:                                       7       (1.60%)
+ outdated version packages:                                      99      (22.70%)
+
+coreos-overlay:
+ total packages:                                                 133
+ common packages:                                                63      (47.36%)
+ newer packages:                                                 6       (4.51%)
+ equal packages:                                                 11      (8.27%)
+ all outdated packages:                                          46      (34.58%)
+ outdated revision packages:                                     0       (0%)
+ outdated suffix packages:                                       1       (.75%)
+ outdated version packages:                                      45      (33.83%)
+
+automation:
+ total updatable things:                                         682
+ total updatable things under automation:                        406     (59.53%)
+ updatable things in portage-stable:                             538
+ updatable things under automation in portage-stable:            406     (75.46%)
+ updatable things in coreos-overlay:                             144
+ updatable things under automation in coreos-overlay:            0       (0%)
