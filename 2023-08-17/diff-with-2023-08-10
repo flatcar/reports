@@ -1,0 +1,30 @@
+general:
+ total packages: +1 (from 571 to 572)
+ portage-stable: +1 (from 438 to 439)
+ common packages: +1 (from 501 to 502)
+ common packages in portage-stable: +1 (from 438 to 439)
+ equal packages: +56 (from 314 to 370)
+ outdated packages: -55 (from 182 to 127)
+ outdated revision packages: -12 (from 32 to 20)
+ outdated suffix packages: -3 (from 6 to 3)
+ outdated version packages: -40 (from 144 to 104)
+
+portage-stable:
+ total packages: +1 (from 438 to 439)
+ common packages: +1 (from 438 to 439)
+ equal packages: +58 (from 303 to 361)
+ all outdated packages: -57 (from 134 to 77)
+ outdated revision packages: -12 (from 32 to 20)
+ outdated suffix packages: -3 (from 5 to 2)
+ outdated version packages: -42 (from 97 to 55)
+
+coreos-overlay:
+ equal packages: -2 (from 11 to 9)
+ all outdated packages: +2 (from 48 to 50)
+ outdated version packages: +2 (from 47 to 49)
+
+automation:
+ total updatable things: +1 (from 684 to 685)
+ total updatable things under automation: +26 (from 408 to 434)
+ updatable things in portage-stable: +1 (from 540 to 541)
+ updatable things under automation in portage-stable: +26 (from 408 to 434)
