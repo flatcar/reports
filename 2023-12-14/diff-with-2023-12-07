@@ -1,0 +1,18 @@
+general:
+ equal packages: -11 (from 380 to 369)
+ outdated packages: +11 (from 124 to 135)
+ outdated revision packages: +2 (from 19 to 21)
+ outdated suffix packages: -1 (from 6 to 5)
+ outdated version packages: +10 (from 99 to 109)
+
+portage-stable:
+ equal packages: -9 (from 370 to 361)
+ all outdated packages: +9 (from 88 to 97)
+ outdated revision packages: +2 (from 17 to 19)
+ outdated suffix packages: -1 (from 6 to 5)
+ outdated version packages: +8 (from 65 to 73)
+
+coreos-overlay:
+ equal packages: -2 (from 10 to 8)
+ all outdated packages: +2 (from 36 to 38)
+ outdated version packages: +2 (from 34 to 36)
