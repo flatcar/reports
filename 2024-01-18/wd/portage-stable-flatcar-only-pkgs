@@ -1,0 +1,13 @@
+dev-util/cmake
+dev-util/gtk-doc-am
+dev-util/meson
+dev-util/meson-format-array
+dev-util/ninja
+sys-devel/autoconf
+sys-devel/autoconf-archive
+sys-devel/autoconf-wrapper
+sys-devel/automake
+sys-devel/automake-wrapper
+sys-devel/gdb
+sys-devel/libtool
+sys-kernel/installkernel-gentoo
