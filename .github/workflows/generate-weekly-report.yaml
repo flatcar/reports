@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out reports repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: reports
@@ -52,7 +52,7 @@ jobs:
           echo "ok=${ok}" >>"${GITHUB_OUTPUT}"
       - name: Check out scripts repo
         if: steps.validate-dates.outputs.ok == 1
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: flatcar/scripts
           path: scripts
@@ -60,7 +60,7 @@ jobs:
           fetch-depth: 1000
       - name: Check out gentoo repo
         if: steps.validate-dates.outputs.ok == 1
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: gentoo/gentoo
           path: gentoo
