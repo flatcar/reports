@@ -1,0 +1,9 @@
+eclass/binutils-funcs.eclass
+eclass/coreos-cargo.eclass
+eclass/coreos-go-depend.eclass
+eclass/coreos-go-lang.eclass
+eclass/coreos-go-utils.eclass
+eclass/coreos-go.eclass
+eclass/coreos-kernel.eclass
+eclass/cros-debug.eclass
+eclass/cros-workon.eclass
