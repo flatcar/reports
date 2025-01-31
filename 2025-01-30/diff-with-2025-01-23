@@ -1,0 +1,23 @@
+general:
+ total packages: -27 (from 680 to 653)
+ portage-stable: -27 (from 564 to 537)
+ common packages: -27 (from 604 to 577)
+ common packages in portage-stable: -27 (from 564 to 537)
+ equal packages: -40 (from 544 to 504)
+ outdated packages: +13 (from 56 to 69)
+ outdated suffix packages: +4 (from 4 to 8)
+ outdated version packages: +9 (from 48 to 57)
+
+portage-stable:
+ total packages: -27 (from 564 to 537)
+ common packages: -27 (from 564 to 537)
+ equal packages: -40 (from 539 to 499)
+ all outdated packages: +13 (from 25 to 38)
+ outdated suffix packages: +4 (from 4 to 8)
+ outdated version packages: +9 (from 18 to 27)
+
+automation:
+ total updatable things: -27 (from 800 to 773)
+ total updatable things under automation: -27 (from 677 to 650)
+ updatable things in portage-stable: -27 (from 677 to 650)
+ updatable things under automation in portage-stable: -27 (from 677 to 650)
