@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "portage-stable hash": "89ef5d69f308f877fdb58bc6f2b7b23fe72a4ef5",
+    "portage-stable date": "Thu, 20 Mar 2025 13:37:56 +0100",
+    "coreos-overlay hash": "d3be1d5f275d8db7ef954652f99194194f6593e8",
+    "coreos-overlay date": "Thu, 27 Mar 2025 09:29:00 +0100",
+    "gentoo hash": "053ea7469964e5969e215a2453e31bdc10269722",
+    "gentoo date": "Thu, 27 Mar 2025 23:13:02 +0000"
+  },
+  "general": {
+    "total packages": 653,
+    "portage-stable": 543,
+    "coreos-overlay": 110,
+    "our packages": 75,
+    "common packages": 578,
+    "common packages in portage-stable": 543,
+    "common packages in coreos-overlay": 35,
+    "newer packages": 4,
+    "equal packages": 492,
+    "outdated packages": 82,
+    "outdated revision packages": 13,
+    "outdated suffix packages": 5,
+    "outdated version packages": 64
+  },
+  "portage-stable": {
+    "total packages": 543,
+    "common packages": 543,
+    "newer packages": 0,
+    "equal packages": 487,
+    "all outdated packages": 56,
+    "outdated revision packages": 12,
+    "outdated suffix packages": 5,
+    "outdated version packages": 39
+  },
+  "coreos-overlay": {
+    "total packages": 110,
+    "common packages": 35,
+    "newer packages": 4,
+    "equal packages": 5,
+    "all outdated packages": 26,
+    "outdated revision packages": 1,
+    "outdated suffix packages": 0,
+    "outdated version packages": 25
+  },
+  "automation": {
+    "total updatable things": 773,
+    "total updatable things under automation": 657,
+    "updatable things in portage-stable": 657,
+    "updatable things under automation in portage-stable": 657,
+    "updatable things in coreos-overlay": 116,
+    "updatable things under automation in coreos-overlay": 0
+  }
+}
