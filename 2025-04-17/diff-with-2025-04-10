@@ -1,0 +1,13 @@
+general:
+ equal packages: -29 (from 532 to 503)
+ outdated packages: +29 (from 42 to 71)
+ outdated revision packages: +2 (from 2 to 4)
+ outdated suffix packages: +2 (from 3 to 5)
+ outdated version packages: +25 (from 37 to 62)
+
+portage-stable:
+ equal packages: -29 (from 527 to 498)
+ all outdated packages: +29 (from 16 to 45)
+ outdated revision packages: +2 (from 1 to 3)
+ outdated suffix packages: +2 (from 3 to 5)
+ outdated version packages: +25 (from 12 to 37)
