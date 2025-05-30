@@ -1,0 +1,11 @@
+general:
+ equal packages: -21 (from 519 to 498)
+ outdated packages: +21 (from 62 to 83)
+ outdated revision packages: +3 (from 14 to 17)
+ outdated version packages: +18 (from 41 to 59)
+
+portage-stable:
+ equal packages: -21 (from 517 to 496)
+ all outdated packages: +21 (from 55 to 76)
+ outdated revision packages: +3 (from 14 to 17)
+ outdated version packages: +18 (from 34 to 52)

@@ -1,0 +1,5 @@
+eclass/binutils-funcs.eclass
+eclass/coreos-go-depend.eclass
+eclass/coreos-go-utils.eclass
+eclass/coreos-go.eclass
+eclass/coreos-kernel.eclass
