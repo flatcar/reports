@@ -1,0 +1,13 @@
+app-emulation/open-vm-tools
+app-misc/ca-certificates
+sys-apps/baselayout
+sys-apps/policycoreutils
+sys-apps/systemd
+sys-auth/pambase
+sys-boot/shim
+sys-boot/syslinux
+sys-cluster/ipvsadm
+sys-libs/libsemanage
+sys-libs/nss-usrfiles
+sys-libs/pam
+virtual/linux-sources
