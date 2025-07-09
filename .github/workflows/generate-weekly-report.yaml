@@ -64,7 +64,7 @@ jobs:
         with:
           repository: gentoo/gentoo
           path: gentoo
-          ref: main
+          ref: master
           fetch-depth: 20000
       - name: Run reports
         if: steps.validate-dates.outputs.ok == 1
